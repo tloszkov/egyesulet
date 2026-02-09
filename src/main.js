@@ -10,33 +10,33 @@ import en from './locales/en.json';
 const app = document.getElementById('app');
 
 async function init() {
-    await i18next
-        .use(Languagedetector)
-        .init({
-            fallbackLng: 'ro',
-            debug: false,
-            resources: {
-                ro: { translation: ro },
-                hu: { translation: hu },
-                en: { translation: en }
-            }
-        });
+  await i18next
+    .use(Languagedetector)
+    .init({
+      fallbackLng: 'ro',
+      debug: false,
+      resources: {
+        ro: { translation: ro },
+        hu: { translation: hu },
+        en: { translation: en }
+      }
+    });
 
-    render();
+  render();
 }
 
 function t(key) {
-    return i18next.t(key);
+  return i18next.t(key);
 }
 
 function changeLanguage(lng) {
-    i18next.changeLanguage(lng).then(() => {
-        render();
-    });
+  i18next.changeLanguage(lng).then(() => {
+    render();
+  });
 }
 
 function render() {
-    app.innerHTML = `
+  app.innerHTML = `
     <header>
       <div class="container nav-wrapper">
         <nav>
@@ -56,6 +56,11 @@ function render() {
             <button class="lang-btn ${i18next.language.startsWith('hu') ? 'active' : ''}" data-lang="hu">HU</button>
             <button class="lang-btn ${i18next.language.startsWith('en') ? 'active' : ''}" data-lang="en">EN</button>
           </div>
+          <button class="mobile-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </nav>
       </div>
     </header>
@@ -163,24 +168,41 @@ function render() {
     </footer>
   `;
 
-    // Add event listeners for language switching
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            changeLanguage(e.target.dataset.lang);
-        });
+  // Add event listeners for language switching
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      changeLanguage(e.target.dataset.lang);
     });
+  });
 
-    // Sticky header logic
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.padding = '0.5rem 0';
-            header.style.boxShadow = 'var(--shadow-md)';
-        } else {
-            header.style.padding = '1rem 0';
-            header.style.boxShadow = 'none';
-        }
+  // Mobile menu toggle logic
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
+  }
+
+  // Close menu when link is clicked
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // Sticky header logic
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.style.padding = '0.5rem 0';
+      header.style.boxShadow = 'var(--shadow-md)';
+    } else {
+      header.style.padding = '1rem 0';
+      header.style.boxShadow = 'none';
+    }
+  });
 }
 
 init();
