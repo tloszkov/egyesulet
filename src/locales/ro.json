@@ -16,9 +16,16 @@
     },
     "about": {
         "title": "Cine suntem?",
-        "description": "Asociația O Șansă Pentru Comunitate este o organizație non-profit independentă, creată pentru a susține progresul social, economic și cultural al comunității locale.",
-        "mission_title": "Misiunea noastră",
-        "mission_text": "Susținem dezvoltarea durabilă și consolidarea societății civile, bazându-ne pe resursele proprii ale comunității."
+        "description": "Asociația „O Șansă Pentru Comunitate” a fost înființată în august 2021 la Cristuru Secuiesc, cu scopul de a deveni un motor al dezvoltării comunitare locale. Credem cu tărie că forța unei comunități stă în propriile sale resurse.",
+        "history_title": "Istoricul nostru",
+        "history_text": "Am pus bazele asociației la data de 27.08.2021 prin inițiativa membrilor fondatori: Kovács Zsolt, Kerestély Attila și Kovács Ioan. De atunci, ne-am angajat să creăm noi oportunități pentru orașul Cristuru Secuiesc și zonele limitrofe.",
+        "mission_title": "Misiunea și obiectivele noastre",
+        "mission_text": "Urmărim dezvoltarea durabilă a comunității locale și sprijinirea eforturilor societății civile pentru stimularea resurselor proprii. Susținem progresul din punct de vedere socio-economic și cultural, încurajând participarea activă a cetățenilor în dezvoltarea locală.",
+        "pillars_title": "Domenii principale de activitate",
+        "pillar_1": "Susținere socială",
+        "pillar_2": "Stimularea dezvoltării economice",
+        "pillar_3": "Promovarea valorilor culturale",
+        "pillar_4": "Dezvoltare durabilă locală"
     },
     "contact": {
         "email": "office@ospc.ro",

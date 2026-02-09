@@ -84,16 +84,47 @@ function render() {
             <h2>${t('about.title')}</h2>
             <div style="width: 60px; height: 4px; background: var(--color-primary); margin: 0 auto; border-radius: 2px;"></div>
           </div>
-          <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+          
+          <div class="grid-2" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: start; margin-bottom: 4rem;">
             <div>
-              <p style="font-size: 1.1rem; margin-bottom: 2rem;">${t('about.description')}</p>
-              <div class="card" style="border-left: 4px solid var(--color-secondary)">
-                <h3>${t('about.mission_title')}</h3>
+              <p style="font-size: 1.15rem; margin-bottom: 2rem; color: var(--text-main); font-weight: 500;">${t('about.description')}</p>
+              
+              <div style="margin-bottom: 2.5rem;">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">${t('about.history_title')}</h3>
+                <p>${t('about.history_text')}</p>
+              </div>
+
+              <div class="card" style="border-left: 4px solid var(--color-secondary); background: #fdfaff;">
+                <h3 style="margin-bottom: 1rem;">${t('about.mission_title')}</h3>
                 <p>${t('about.mission_text')}</p>
               </div>
             </div>
-            <div style="background: #e2e8f0; height: 400px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: #94a3b8;">
-              <span>[Kép az egyesületről]</span>
+            <div style="background: url('/logo.png') center/contain no-repeat; height: 400px; border-radius: 20px; opacity: 0.1;">
+            </div>
+          </div>
+
+          <!-- Pillars / Activity Areas -->
+          <div style="background: white; padding: 3rem; border-radius: 24px; box-shadow: var(--shadow-sm);">
+            <h3 style="text-align: center; margin-bottom: 3rem; font-size: 1.75rem;">${t('about.pillars_title')}</h3>
+            <div class="grid-3">
+              <div style="text-align: center; padding: 1rem;">
+                <div style="width: 48px; height: 48px; background: #eff6ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--color-primary);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <h4>${t('about.pillar_1')}</h4>
+              </div>
+              <div style="text-align: center; padding: 1rem;">
+                <div style="width: 48px; height: 48px; background: #fef2f2; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: #ef4444;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </div>
+                <h4>${t('about.pillar_2')}</h4>
+              </div>
+              <div style="text-align: center; padding: 1rem;">
+                <div style="width: 48px; height: 48px; background: #f0fdf4; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: #22c55e;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path><path d="M5 3v4"></path><path d="M19 17v4"></path><path d="M3 5h4"></path><path d="M17 19h4"></path></svg>
+                </div>
+                <h4>${t('about.pillar_3')}</h4>
+              </div>
             </div>
           </div>
         </div>

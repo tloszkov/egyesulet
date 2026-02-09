@@ -16,9 +16,16 @@
   },
   "about": {
     "title": "Kik vagyunk mi?",
-    "description": "Az Asociația O Șansă Pentru Comunitate egy független, nonprofit szervezet, amelynek célja a helyi közösség társadalmi, gazdasági és kulturális fejlődésének elősegítése.",
-    "mission_title": "Küldetésünk",
-    "mission_text": "A közösség saját erőforrásaira alapozva támogatjuk a civil társadalom megerősödését és a fenntartható fejlődést."
+    "description": "Az Asociația O Șansă Pentru Comunitate (Egy esély a közösségnek egyesület) 2021 augusztusában alakult Székelykeresztúron azzal a céllal, hogy motorja legyen a helyi közösségi élet fejlődésének. Hiszünk abban, hogy a közösség ereje a saját erőforrásaiban rejlik.",
+    "history_title": "Történetünk",
+    "history_text": "Egyesületünket 2021. augusztus 27-én hívtuk életre alapító tagjaink (Kovács Zsolt, Kerestély Attila és Kovács Ioan) kezdeményezésére. Azóta elkötelezetten dolgozunk azon, hogy Székelykeresztúr és környéke számára új lehetőségeket teremtsünk.",
+    "mission_title": "Küldetésünk és céljaink",
+    "mission_text": "Fő célunk a helyi közösség fenntartható fejlődése és a civil szféra megerősítése. Olyan programokat támogatunk és valósítunk meg, amelyek elősegítik a társadalmi, gazdasági és kulturális fejlődést, ösztönözve a közösség tagjait saját erőforrásaik mozgósítására.",
+    "pillars_title": "Főbb tevékenységi területeink",
+    "pillar_1": "Szociális támogatás",
+    "pillar_2": "Gazdasági fejlődés ösztönzése",
+    "pillar_3": "Kulturális értékek megőrzése és népszerűsítése",
+    "pillar_4": "Fenntartható helyi fejlesztések"
   },
   "contact": {
     "email": "office@ospc.ro",
