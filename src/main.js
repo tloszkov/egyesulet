@@ -42,7 +42,6 @@ function render() {
         <nav>
           <div class="logo-container">
             <img src="/logo.png" alt="Logo" style="height: 48px; width: auto;">
-            <span>O Șansă</span>
           </div>
           <ul class="nav-links">
             <li><a href="#home">${t('nav.home')}</a></li>
