@@ -158,7 +158,8 @@ function render() {
           <div>
             <h4>${t('nav.contact')}</h4>
             <p style="color: #94a3b8; margin-top: 1rem;">${t('contact.address')}</p>
-            <p style="color: #94a3b8;">Email: <a href="mailto:${t('contact.email')}" style="color: inherit; text-decoration: none;">${t('contact.email')}</a></p>
+            <p style="color: #94a3b8; margin-top: 0.5rem;">Email: <a href="mailto:${t('contact.email')}" style="color: inherit; text-decoration: none;">${t('contact.email')}</a></p>
+            <p style="color: #94a3b8; margin-top: 0.5rem; font-size: 0.9rem;">${t('contact.president')}<br><a href="mailto:${t('contact.president_email')}" style="color: inherit; text-decoration: none;">${t('contact.president_email')}</a></p>
           </div>
         </div>
         <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #334155; text-align: center; color: #64748b; font-size: 0.9rem;">

@@ -22,6 +22,8 @@
     },
     "contact": {
         "email": "office@ospc.ro",
+        "president": "President: Kovács Zsolt",
+        "president_email": "kzsolt@ospc.ro",
         "address": "Str. Morii nr. 34, Cristuru Secuiesc, Harghita"
     }
 }
