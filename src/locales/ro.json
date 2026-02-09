@@ -19,5 +19,9 @@
         "description": "Asociația O Șansă Pentru Comunitate este o organizație non-profit independentă, creată pentru a susține progresul social, economic și cultural al comunității locale.",
         "mission_title": "Misiunea noastră",
         "mission_text": "Susținem dezvoltarea durabilă și consolidarea societății civile, bazându-ne pe resursele proprii ale comunității."
+    },
+    "contact": {
+        "email": "office@ospc.ro",
+        "address": "Str. Morii nr. 34, Cristuru Secuiesc, Harghita"
     }
 }

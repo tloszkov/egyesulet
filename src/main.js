@@ -156,9 +156,9 @@ function render() {
             </ul>
           </div>
           <div>
-            <h4>Kapcsolat</h4>
-            <p style="color: #94a3b8; margin-top: 1rem;">Str. Morii nr. 34, Cristuru Secuiesc, Harghita</p>
-            <p style="color: #94a3b8;">Email: contact@osansapentrucomunitate.ro</p>
+            <h4>${t('nav.contact')}</h4>
+            <p style="color: #94a3b8; margin-top: 1rem;">${t('contact.address')}</p>
+            <p style="color: #94a3b8;">Email: <a href="mailto:${t('contact.email')}" style="color: inherit; text-decoration: none;">${t('contact.email')}</a></p>
           </div>
         </div>
         <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #334155; text-align: center; color: #64748b; font-size: 0.9rem;">

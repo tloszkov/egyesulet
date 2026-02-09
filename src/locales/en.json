@@ -19,5 +19,9 @@
         "description": "The 'A Chance for the Community' Association is an independent non-profit organization dedicated to fostering social, economic, and cultural progress.",
         "mission_title": "Our Mission",
         "mission_text": "We support sustainable development and the strengthening of civil society by leveraging community resources."
+    },
+    "contact": {
+        "email": "office@ospc.ro",
+        "address": "Str. Morii nr. 34, Cristuru Secuiesc, Harghita"
     }
 }
