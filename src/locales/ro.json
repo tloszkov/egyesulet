@@ -1,0 +1,23 @@
+{
+    "nav": {
+        "home": "Acasă",
+        "about": "Despre noi",
+        "projects": "Proiecte",
+        "news": "Știri",
+        "join": "Alătură-te",
+        "contact": "Contact"
+    },
+    "hero": {
+        "title1": "O șansă pentru",
+        "title2": "comunitate",
+        "description": "Lucrăm pentru dezvoltarea durabilă a societății civile din Cristuru Secuiesc și pentru activarea resurselor comunitare.",
+        "cta_join": "Alătură-te",
+        "cta_support": "Susține-ne"
+    },
+    "about": {
+        "title": "Cine suntem?",
+        "description": "Asociația O Șansă Pentru Comunitate este o organizație non-profit independentă, creată pentru a susține progresul social, economic și cultural al comunității locale.",
+        "mission_title": "Misiunea noastră",
+        "mission_text": "Susținem dezvoltarea durabilă și consolidarea societății civile, bazându-ne pe resursele proprii ale comunității."
+    }
+}

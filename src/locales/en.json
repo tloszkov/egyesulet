@@ -1,0 +1,23 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About Us",
+        "projects": "Projects",
+        "news": "News",
+        "join": "Join Us",
+        "contact": "Contact"
+    },
+    "hero": {
+        "title1": "A chance for the",
+        "title2": "community",
+        "description": "We work for the sustainable development of civil society in Cristuru Secuiesc and the activation of community resources.",
+        "cta_join": "Join Us",
+        "cta_support": "Support Us"
+    },
+    "about": {
+        "title": "Who are we?",
+        "description": "The 'A Chance for the Community' Association is an independent non-profit organization dedicated to fostering social, economic, and cultural progress.",
+        "mission_title": "Our Mission",
+        "mission_text": "We support sustainable development and the strengthening of civil society by leveraging community resources."
+    }
+}

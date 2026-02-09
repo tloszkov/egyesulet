@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "home": "Kezdőlap",
+    "about": "Rólunk",
+    "projects": "Projektek",
+    "news": "Hírek",
+    "join": "Csatlakozz",
+    "contact": "Kapcsolat"
+  },
+  "hero": {
+    "title1": "Egy esély a",
+    "title2": "közösségnek",
+    "description": "A keresztúri civil társadalom fenntartható fejlődéséért és a közösségi erőforrások aktiválásáért dolgozunk.",
+    "cta_join": "Csatlakozz hozzánk",
+    "cta_support": "Támogass minket"
+  },
+  "about": {
+    "title": "Kik vagyunk mi?",
+    "description": "Az Asociația O Șansă Pentru Comunitate egy független, nonprofit szervezet, amelynek célja a helyi közösség társadalmi, gazdasági és kulturális fejlődésének elősegítése.",
+    "mission_title": "Küldetésünk",
+    "mission_text": "A közösség saját erőforrásaira alapozva támogatjuk a civil társadalom megerősödését és a fenntartható fejlődést."
+  }
+}
