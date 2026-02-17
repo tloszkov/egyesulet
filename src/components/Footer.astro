@@ -2,32 +2,74 @@
 import { useTranslations } from '../i18n/utils';
 const { lang } = Astro.props;
 const t = useTranslations(lang as any);
+
+const currentYear = new Date().getFullYear();
 ---
 
-<footer style="background: #1e293b; color: white; padding: 4rem 0;">
+<footer style="background: #0f172a; color: white; padding: 8rem 0 4rem;">
   <div class="container">
-    <div class="grid-3">
-      <div>
-        <h3>O Șansă Pentru Comunitate</h3>
-        <p style="color: #94a3b8; margin-top: 1rem;">Egyesület Cristuru Secuiesc (Székelykeresztúr)</p>
+    <div class="footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 4rem;">
+      <div class="footer-brand">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+            <img src="/logo.png" alt="Logo" style="height: 54px; filter: brightness(0) invert(1);" />
+            <h3 style="font-size: 1.5rem; letter-spacing: -0.02em;">O Șansă Pentru Comunitate</h3>
+        </div>
+        <p style="color: #94a3b8; font-size: 1.1rem; line-height: 1.7; max-width: 400px;">
+            {lang === 'hu' ? 'A helyi közösség fejlesztése, az erőforrások aktiválása és egy fenntartható jövő építése Cristuru Secuiesc környékén.' : 'Developing the local community, activating resources, and building a sustainable future in the Cristuru Secuiesc region.'}
+        </p>
       </div>
-      <div>
-        <h4>Linkek</h4>
-        <ul style="list-style: none; margin-top: 1rem; color: #94a3b8;">
-          <li style="margin-bottom: 0.5rem;"><a href="#about" style="color: inherit; text-decoration: none;">{t('nav.about')}</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="#projects" style="color: inherit; text-decoration: none;">{t('nav.projects')}</a></li>
-          <li style="margin-bottom: 0.5rem;"><a href="#privacy" style="color: inherit; text-decoration: none;">Adatvédelem</a></li>
+
+      <div class="footer-links">
+        <h4 style="margin-bottom: 2rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: #4f46e5;">Linkek</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+          <li><a href="#about" class="footer-link-item">{t('nav.about')}</a></li>
+          <li><a href="#projects" class="footer-link-item">{t('nav.projects')}</a></li>
+          <li><a href="#news" class="footer-link-item">{t('nav.news')}</a></li>
+          <li><a href="/privacy" class="footer-link-item">Privacy Policy</a></li>
         </ul>
       </div>
-      <div>
-        <h4>{t('nav.contact')}</h4>
-        <p style="color: #94a3b8; margin-top: 1rem;">{t('contact.address')}</p>
-        <p style="color: #94a3b8; margin-top: 0.5rem;">Email: <a href={`mailto:${t('contact.email')}`} style="color: inherit; text-decoration: none;">{t('contact.email')}</a></p>
-        <p style="color: #94a3b8; margin-top: 0.5rem; font-size: 0.9rem;">{t('contact.president')}<br><a href={`mailto:${t('contact.president_email')}`} style="color: inherit; text-decoration: none;">{t('contact.president_email')}</a></p>
+
+      <div class="footer-contact">
+        <h4 style="margin-bottom: 2rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: #ec4899;">{t('nav.contact')}</h4>
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; color: #cbd5e1;">
+            <div style="display: flex; gap: 1rem;">
+                <span style="color: #4f46e5;">📍</span>
+                <span>{t('contact.address')}</span>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <span style="color: #ec4899;">✉️</span>
+                <a href={`mailto:${t('contact.email')}`} style="color: inherit; text-decoration: none;">{t('contact.email')}</a>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+                <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.5rem;">{t('contact.president')}</p>
+                <p style="font-weight: 700; color: white;">Kovács Zsolt</p>
+                <a href={`mailto:${t('contact.president_email')}`} style="color: var(--primary-light); font-size: 0.9rem; text-decoration: none;">{t('contact.president_email')}</a>
+            </div>
+        </div>
       </div>
     </div>
-    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #334155; text-align: center; color: #64748b; font-size: 0.9rem;">
-      &copy; 2024 Asociația O Șansă Pentru Comunitate. All rights reserved.
+
+    <div style="margin-top: 8rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; color: #64748b; font-size: 0.9rem;">
+      <p>&copy; {currentYear} Egy Esély a Közösségért Egyesület. Built with passion.</p>
+      <div style="display: flex; gap: 2rem;">
+          <a href="#" style="color: inherit; text-decoration: none;">Facebook</a>
+          <a href="#" style="color: inherit; text-decoration: none;">Instagram</a>
+      </div>
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-link-item {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 500;
+  }
+  .footer-link-item:hover {
+    color: white;
+  }
+  @media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr !important; gap: 4rem; }
+  }
+</style>
