@@ -116,9 +116,14 @@ const isHu = lang === 'hu';
 
             <div class="signature-block">
                 <div class="form-section-title">03. {isRo ? 'Semnătură' : 'Aláírás'}</div>
-                <p class="instr">{isRo ? 'Semnează în interiorul chenarului' : 'Írd alá a kereten belül'}</p>
-                <div class="canvas-area">
-                    <div class="brush-icon">✏️</div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <p class="instr" style="margin: 0;">{isRo ? 'Semnează în interiorul chenarului' : 'Írd alá a kereten belül'}</p>
+                    <button type="button" id="clear-sig" style="background: none; border: none; color: #ef4444; font-size: 0.75rem; font-weight: 700; cursor: pointer; text-transform: uppercase;">
+                        {isRo ? 'Șterge' : 'Törlés'}
+                    </button>
+                </div>
+                <div class="canvas-wrapper">
+                    <canvas id="sig-canvas" height="200"></canvas>
                     <div class="sig-line"></div>
                 </div>
             </div>
@@ -141,6 +146,70 @@ const isHu = lang === 'hu';
     </div>
   </div>
 </section>
+
+<script>
+    const canvas = document.getElementById('sig-canvas') as HTMLCanvasElement;
+    const clearBtn = document.getElementById('clear-sig');
+    
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+
+        // Resize canvas to fill wrapper width
+        const resize = () => {
+            const rect = canvas.parentElement?.getBoundingClientRect();
+            if (rect) {
+                canvas.width = rect.width;
+            }
+        };
+        resize();
+        window.addEventListener('resize', resize);
+
+        const getPos = (e: MouseEvent | TouchEvent) => {
+            const rect = canvas.getBoundingClientRect();
+            if (e instanceof MouseEvent) {
+                return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+            } else {
+                return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+            }
+        };
+
+        const startDrawing = (e: MouseEvent | TouchEvent) => {
+            drawing = true;
+            const pos = getPos(e);
+            ctx?.beginPath();
+            ctx?.moveTo(pos.x, pos.y);
+            if (e instanceof TouchEvent) e.preventDefault();
+        };
+
+        const draw = (e: MouseEvent | TouchEvent) => {
+            if (!drawing || !ctx) return;
+            const pos = getPos(e);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#0f172a';
+            ctx.stroke();
+            if (e instanceof TouchEvent) e.preventDefault();
+        };
+
+        const stopDrawing = () => {
+            drawing = false;
+        };
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        window.addEventListener('mouseup', stopDrawing);
+
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchmove', draw);
+        canvas.addEventListener('touchend', stopDrawing);
+
+        clearBtn?.addEventListener('click', () => {
+            ctx?.clearRect(0, 0, canvas.width, canvas.height);
+        });
+    }
+</script>
 
 <style>
   #support-premium {
@@ -339,28 +408,31 @@ const isHu = lang === 'hu';
 
   .signature-block { margin-bottom: 3rem; }
   .instr { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; }
-  .canvas-area {
-    height: 160px;
+  .canvas-wrapper {
+    height: 200px;
     background: #f8fafc;
     border: 2px dashed #cbd5e1;
     border-radius: 16px;
     position: relative;
     cursor: crosshair;
+    overflow: hidden;
+  }
+  #sig-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
   }
   .sig-line {
     position: absolute;
-    bottom: 40px;
+    bottom: 50px;
     left: 10%;
     right: 10%;
     height: 1px;
     background: #94a3b8;
-  }
-  .brush-icon {
-    position: absolute;
-    bottom: 45px;
-    left: 8%;
-    font-size: 1.5rem;
-    opacity: 0.3;
+    z-index: 1;
   }
 
   .btn-block { width: 100%; padding: 1.25rem; font-size: 1.1rem; }
