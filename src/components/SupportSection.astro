@@ -162,13 +162,39 @@ const isHu = lang === 'hu';
             const response = await fetch('/localitati.json');
             allLocalities = await response.json();
             console.log('Localities loaded:', allLocalities.length);
+            populateCounties();
         } catch (error) {
             console.error('Failed to load localities:', error);
         }
     };
 
+    const populateCounties = () => {
+        if (!countySelect) return;
+        
+        // Get unique counties (auto code and name)
+        const countiesMap = new Map();
+        allLocalities.forEach(loc => {
+            if (!countiesMap.has(loc.auto)) {
+                countiesMap.set(loc.auto, loc.judet);
+            }
+        });
+
+        const sortedCounties = Array.from(countiesMap.entries()).sort((a, b) => a[1].localeCompare(b[1]));
+        
+        // Keep the first placeholder option
+        const placeholder = countySelect.options[0];
+        countySelect.innerHTML = '';
+        countySelect.appendChild(placeholder);
+
+        sortedCounties.forEach(([code, name]) => {
+            const opt = document.createElement('option');
+            opt.value = code;
+            opt.textContent = name;
+            countySelect.appendChild(opt);
+        });
+    };
+
     if (countySelect && citySelect) {
-        // Start loading the JSON immediately
         loadLocalities();
 
         countySelect.addEventListener('change', () => {
@@ -182,31 +208,9 @@ const isHu = lang === 'hu';
                 return;
             }
 
-            if (allLocalities.length === 0) {
-                const opt = document.createElement('option');
-                opt.textContent = "Betöltés...";
-                citySelect.appendChild(opt);
-                
-                // If not loaded yet, wait and try again
-                const checkInterval = setInterval(() => {
-                    if (allLocalities.length > 0) {
-                        clearInterval(checkInterval);
-                        countySelect.dispatchEvent(new Event('change'));
-                    }
-                }, 500);
-                return;
-            }
-
             const filtered = allLocalities
                 .filter(loc => loc.auto === countyCode)
                 .sort((a, b) => a.diacritice.localeCompare(b.diacritice));
-
-            if (filtered.length === 0) {
-                const opt = document.createElement('option');
-                opt.textContent = "Nincs találat";
-                citySelect.appendChild(opt);
-                return;
-            }
 
             // Default placeholder
             const placeholder = document.createElement('option');
