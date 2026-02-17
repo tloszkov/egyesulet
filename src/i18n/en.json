@@ -32,5 +32,16 @@
         "president": "President: Kovács Zsolt",
         "president_email": "kzsolt@ospc.ro",
         "address": "Str. Morii nr. 34, Cristuru Secuiesc, Harghita"
+    },
+    "support": {
+        "tax_title": "Tax Redirection (2% / 3.5%)",
+        "tax_text": "Support our activity by redirecting a part of your income tax. It's free for you, but vital for us!",
+        "tax_cta": "Download Form",
+        "direct_title": "Direct Donation",
+        "direct_text": "You can support our projects via bank transfer:",
+        "bank_titular": "Account Holder",
+        "bank_iban": "IBAN",
+        "bank_bank": "Bank",
+        "bank_swift": "SWIFT"
     }
 }

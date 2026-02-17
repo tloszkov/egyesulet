@@ -13,19 +13,19 @@ const t = useTranslations(lang as any);
     
     <div class="grid-2" style="margin-top: 3rem;">
       <div class="card" style="padding: 3rem; text-align: center;">
-        <h3 style="margin-bottom: 1.5rem;">2% / 3.5% Din Impozit</h3>
-        <p style="margin-bottom: 2rem;">Sprijină activitatea noastră redirecționând o parte din impozitul pe venit. Este gratuit pentru tine, dar vital pentru noi!</p>
-        <a href="#" class="btn btn-primary">Descarcă Formularul</a>
+        <h3 style="margin-bottom: 1.5rem;">{t('support.tax_title')}</h3>
+        <p style="margin-bottom: 2rem;">{t('support.tax_text')}</p>
+        <a href="#" class="btn btn-primary">{t('support.tax_cta')}</a>
       </div>
       
       <div class="card" style="padding: 3rem; text-align: center;">
-        <h3 style="margin-bottom: 1.5rem;">Donație Directă</h3>
-        <p style="margin-bottom: 1rem;">Poți susține proiectele noastre prin transfer bancar:</p>
+        <h3 style="margin-bottom: 1.5rem;">{t('support.direct_title')}</h3>
+        <p style="margin-bottom: 1rem;">{t('support.direct_text')}</p>
         <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; font-family: monospace; text-align: left;">
-          <p><strong>Titular:</strong> Asociația O Șansă Pentru Comunitate</p>
-          <p><strong>IBAN:</strong> RO00 XXXX XXXX XXXX XXXX XXXX</p>
-          <p><strong>Banca:</strong> BCR</p>
-          <p><strong>SWIFT:</strong> RNCB ROBU</p>
+          <p><strong>{t('support.bank_titular')}:</strong> Asociația O Șansă Pentru Comunitate</p>
+          <p><strong>{t('support.bank_iban')}:</strong> RO00 XXXX XXXX XXXX XXXX XXXX</p>
+          <p><strong>{t('support.bank_bank')}:</strong> BCR</p>
+          <p><strong>{t('support.bank_swift')}:</strong> RNCB ROBU</p>
         </div>
       </div>
     </div>
