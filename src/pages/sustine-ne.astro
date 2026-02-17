@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SupportSection from '../components/SupportSection.astro';
+
+const lang = 'ro';
+---
+
+<Layout title="Susține-ne - O Șansă Pentru Comunitate" lang={lang}>
+	<Header lang={lang} />
+	<main style="padding-top: 100px;">
+        <SupportSection lang={lang} />
+    </main>
+	<Footer lang={lang} />
+</Layout>

@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AboutSection from '../../components/AboutSection.astro';
+
+const lang = 'hu';
+---
+
+<Layout title="Rólunk - Egy Esély a Közösségért Egyesület" lang={lang}>
+	<Header lang={lang} />
+	<main style="padding-top: 100px;">
+        <AboutSection lang={lang} />
+    </main>
+	<Footer lang={lang} />
+</Layout>

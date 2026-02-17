@@ -1,0 +1,32 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { getCollection } from 'astro:content';
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
+
+const projects = await getCollection('projects', ({ id }) => {
+  return id.startsWith(`${lang}/`);
+});
+---
+
+<section id="projects" style="background: #fff;">
+  <div class="container">
+    <div class="section-title">
+      <h2>{t('nav.projects')}</h2>
+    </div>
+    <div class="grid-3">
+      {projects.length > 0 ? projects.map(project => (
+        <div class="card">
+          <div style={`background: #f1f5f9; height: 200px; border-radius: 8px; margin-bottom: 1.5rem; background-image: url(${project.data.image || ''}); background-size: cover; background-position: center;`}></div>
+          <h3>{project.data.title}</h3>
+          <p>{project.data.description}</p>
+        </div>
+      )) : (
+        <div style="grid-column: 1 / -1; text-align: center; color: #64748b;">
+          <p>Aproape gata! În curând vom publica primele noastre proiecte.</p>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

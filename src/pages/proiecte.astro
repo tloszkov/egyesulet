@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+
+const lang = 'ro';
+---
+
+<Layout title="Proiecte - O Șansă Pentru Comunitate" lang={lang}>
+	<Header lang={lang} />
+	<main style="padding-top: 100px;">
+        <ProjectsSection lang={lang} />
+    </main>
+	<Footer lang={lang} />
+</Layout>

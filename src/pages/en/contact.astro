@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<Layout title="Contact - A Chance for the Community" lang={lang}>
+	<Header lang={lang} />
+	<main style="padding-top: 120px; padding-bottom: 6rem;">
+        <div class="container">
+            <div class="section-title">
+                <h2>{t('nav.contact')}</h2>
+                <p>We are here to answer your questions.</p>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Contact Information</h3>
+                    <p style="margin-top: 1.5rem;"><strong>Address:</strong> {t('contact.address')}</p>
+                    <p style="margin-top: 1rem;"><strong>Email:</strong> {t('contact.email')}</p>
+                    <p style="margin-top: 1rem;"><strong>{t('contact.president')}:</strong> {t('contact.president_email')}</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Send us a message</h3>
+                    <p style="color: #64748b;">The contact form will be available soon.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+	<Footer lang={lang} />
+</Layout>

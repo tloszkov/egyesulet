@@ -2,6 +2,30 @@
 import { useTranslations } from '../i18n/utils';
 const { lang } = Astro.props;
 const t = useTranslations(lang as any);
+
+const links = {
+    ro: {
+        about: '/despre-noi',
+        projects: '/proiecte',
+        news: '/stiri',
+        contact: '/contact',
+        support: '/sustine-ne'
+    },
+    hu: {
+        about: '/hu/rolunk',
+        projects: '/hu/projektek',
+        news: '/hu/hirek',
+        contact: '/hu/kapcsolat',
+        support: '/hu/tamogatas'
+    },
+    en: {
+        about: '/en/about',
+        projects: '/en/projects',
+        news: '/en/news',
+        contact: '/en/contact',
+        support: '/en/support'
+    }
+}[lang as 'ro' | 'hu' | 'en'];
 ---
 
 <header>
@@ -13,11 +37,12 @@ const t = useTranslations(lang as any);
         </a>
       </div>
       <ul class="nav-links">
-        <li><a href="#home">{t('nav.home')}</a></li>
-        <li><a href="#about">{t('nav.about')}</a></li>
-        <li><a href="#projects">{t('nav.projects')}</a></li>
-        <li><a href="#news">{t('nav.news')}</a></li>
-        <li><a href="#contact">{t('nav.contact')}</a></li>
+        <li><a href={lang === 'ro' ? '/' : `/${lang}/`}>{t('nav.home')}</a></li>
+        <li><a href={links.about}>{t('nav.about')}</a></li>
+        <li><a href={links.projects}>{t('nav.projects')}</a></li>
+        <li><a href={links.news}>{t('nav.news')}</a></li>
+        <li><a href={links.contact}>{t('nav.contact')}</a></li>
+        <li><a href={links.support} class="btn-support-nav">{t('hero.cta_support')}</a></li>
       </ul>
       <div class="lang-switcher">
         <a href="/" class={`lang-btn ${lang === 'ro' ? 'active' : ''}`}>RO</a>
@@ -33,8 +58,22 @@ const t = useTranslations(lang as any);
   </div>
 </header>
 
+<style>
+    .btn-support-nav {
+        background: var(--color-secondary);
+        color: white !important;
+        padding: 0.5rem 1rem !important;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: transform 0.2s;
+    }
+    .btn-support-nav:hover {
+        transform: translateY(-2px);
+        background: #9d174d; /* Darker pink */
+    }
+</style>
+
 <script>
-  // Mobile menu toggle logic
   const menuToggle = document.getElementById('menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   
@@ -44,14 +83,12 @@ const t = useTranslations(lang as any);
     });
   }
 
-  // Close menu when link is clicked
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks?.classList.remove('active');
     });
   });
 
-  // Sticky header logic
   const header = document.querySelector('header');
   window.addEventListener('scroll', () => {
     if (header) {

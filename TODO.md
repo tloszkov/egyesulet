@@ -13,25 +13,14 @@ Ez a dokumentum tartalmazza az összes olyan lépést, amely egy profi, bizalom�
 
 ---
 
-## 🟡 2. Tartalom és Identitás (Folyamatban)
-- [x] **Hivatalos név**: Megadva (Egy Esély a Közösségért Egyesület).
-- [x] **Rólunk szekció**: Kezdő szöveg az alapító okirat alapján.
-- [ ] **Képek cseréje**: Valódi, jó minőségű fotók az egyesület életéből a helyőrzők helyére. (Kérdés: Vannak nagy felbontású fotóid?)
-- [ ] **Projektek részletezése**: 
-    - [ ] Futó projektek listája (Név, cél, célcsoport).
-    - [ ] Lezárt projektek galériája (Eredmények, tanulságok).
-- [ ] **Küldetés pontosítása**: Vannak-e cụm (szlogen) javaslataid?
-
----
-
-## 🟡 3. Többnyelvűség (i18n)
-- [x] **Struktúra**: HU, RO, EN váltó működik.
-- [ ] **Fordítások teljesítése**: Minden jövőbeli tartalom (projektek, hírek) megírása mindhárom nyelven.
-- [ ] **Nyelv-specifikus linkek**: Ha vannak pl. román nyelvű pályázati kiírások, azok külön kezelése.
-
----
-
-## 🟠 4. Hitelesség és Átláthatóság (Kiemelten Fontos!)
+- [x] **Többoldalas szerkezet kialakítása**: Az egyoldalas (one-page) elrendezés helyett külön aloldalak létrehozása:
+    - [x] Kezdőlap (Home)
+    - [x] Rólunk (About)
+    - [x] Projektek (Projects)
+    - [x] Hírek (News)
+    - [x] Kapcsolat (Contact)
+    - [x] Támogatás (Support) - **ELKÉSZÜLT!**
+- [ ] **Facebook API Integráció**:
 - [ ] **1% / 2% Adófelajánlás**: Figyelemfelkeltő doboz, letölthető nyilatkozattal (vagy online kitöltési segédlettel).
 - [ ] **Támogatási adatok**: Bankszámlaszám, SWIFT kód, adományozási célok.
 - [ ] **Éves beszámolók**: Egy „Letöltések” vagy „Átláthatóság” fül a közhasznúsági jelentéseknek (PDF-ek).
