@@ -82,61 +82,123 @@ const isHu = lang === 'hu';
         </div>
 
         <form class="modern-form" id="support-form">
-            <div class="form-section-title">01. {isRo ? 'Identificare' : 'Azonosítás'}</div>
+            <!-- Section 1: Identification -->
+            <div class="form-banner">{isRo ? 'Date de identificare a contribuabilului' : 'Adózó azonosító adatai'}</div>
             <div class="form-grid">
                 <div class="input-group">
-                    <label>Nume / Vezetéknév *</label>
-                    <input type="text" placeholder="Ex: Popescu" />
+                    <label>{isRo ? 'Nume *' : 'Vezetéknév *'}</label>
+                    <input type="text" placeholder="Ex: Popescu" required />
                 </div>
                 <div class="input-group">
-                    <label>Prenume / Utónév *</label>
-                    <input type="text" placeholder="Ex: Ion" />
+                    <label>{isRo ? 'Prenume *' : 'Utónév *'}</label>
+                    <input type="text" placeholder="Ex: Ion" required />
                 </div>
-                <div class="input-group full">
-                    <label>CNP / Személyi szám *</label>
-                    <input type="text" id="cnp-input" placeholder="1XXXXXXXXXXXX" maxlength="13" />
+                <div class="input-group">
+                    <label>{isRo ? 'Inițială Tată (opțional)' : 'Apa kezdőbetűje (opcionális)'}</label>
+                    <input type="text" placeholder="Ex: A." />
+                </div>
+                <div class="input-group">
+                    <label>CNP / NIF *</label>
+                    <input type="text" id="cnp-input" placeholder="1XXXXXXXXXXXX" maxlength="13" required />
                     <span id="cnp-error" class="error-msg" style="display: none; color: #ef4444; font-size: 0.75rem; font-weight: 600; margin-top: 0.25rem;"></span>
                 </div>
+                <div class="input-group">
+                    <label>Email *</label>
+                    <input type="email" placeholder="email@example.com" required />
+                </div>
+                <div class="input-group">
+                    <label>{isRo ? 'Telefon (opțional)' : 'Telefonszám (opcionális)'}</label>
+                    <input type="tel" placeholder="07xx xxx xxx" />
+                </div>
             </div>
 
-            <div class="form-section-title">02. {isRo ? 'Adresa' : 'Lakcím'}</div>
+            <!-- Section 2: Address -->
+            <div class="form-banner">{isRo ? 'Adresa de domiciliu (conform actului de identitate)' : 'Lakcím (a személyi igazolvány szerint)'}</div>
             <div class="form-grid">
                 <div class="input-group">
-                    <label>Județ / Megye *</label>
-                    <select id="county-select">
+                    <label>{isRo ? 'Județ *' : 'Megye *'}</label>
+                    <select id="county-select" required>
                         <option value="">{isRo ? 'Selectează Județ...' : 'Válassz megyét...'}</option>
-                        <option value="HR">Harghita / Hargita</option>
-                        <option value="CV">Covasna / Kovászna</option>
                     </select>
                 </div>
                 <div class="input-group">
-                    <label>Localitate / Város *</label>
-                    <select id="city-select">
-                        <option value="">{isRo ? 'Selectează Județ mai întâi...' : 'Előbb válassz megyét...'}</option>
+                    <label>{isRo ? 'Localitate *' : 'Település *'}</label>
+                    <select id="city-select" required>
+                        <option value="">{isRo ? 'Előbb válassz megyét...' : 'Előbb válassz megyét...'}</option>
                     </select>
+                </div>
+                <div class="input-group">
+                    <label>{isRo ? 'Cod poștal' : 'Irányítószám'}</label>
+                    <input type="text" placeholder="XXXXXX" />
+                </div>
+                <div class="input-group">
+                    <label>{isRo ? 'Strada *' : 'Utca *'}</label>
+                    <input type="text" placeholder="..." required />
+                </div>
+                <div class="input-group mini">
+                    <label>{isRo ? 'Nr. *' : 'Házszám *'}</label>
+                    <input type="text" placeholder="1" required />
+                </div>
+                <div class="input-group mini">
+                    <label>Bloc</label>
+                    <input type="text" placeholder="A1" />
+                </div>
+                <div class="input-group mini">
+                    <label>Scara</label>
+                    <input type="text" placeholder="A" />
+                </div>
+                <div class="input-group mini">
+                    <label>Etaj</label>
+                    <input type="text" placeholder="1" />
+                </div>
+                <div class="input-group mini">
+                    <label>Apart.</label>
+                    <input type="text" placeholder="12" />
                 </div>
             </div>
 
+            <!-- Section 3: Period -->
+            <div class="form-banner">{isRo ? 'Perioada redirecționării' : 'Felajánlás időtartama'}</div>
+            <div class="period-selection">
+                <label class="radio-card">
+                    <input type="radio" name="period" value="1" checked />
+                    <span class="radio-content">
+                        <span class="radio-check"></span>
+                        <span class="radio-label">{isRo ? 'Un an' : 'Egy év'}</span>
+                    </span>
+                </label>
+                <label class="radio-card">
+                    <input type="radio" name="period" value="2" />
+                    <span class="radio-content">
+                        <span class="radio-check"></span>
+                        <span class="radio-label">{isRo ? 'Doi ani' : 'Két év'}</span>
+                    </span>
+                </label>
+            </div>
+
+            <!-- Section 4: Signature -->
+            <div class="form-banner">{isRo ? 'Semnătură olograf *' : 'Saját kezű aláírás *'}</div>
             <div class="signature-block">
-                <div class="form-section-title">03. {isRo ? 'Semnătură' : 'Aláírás'}</div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                    <p class="instr" style="margin: 0;">{isRo ? 'Semnează în interiorul chenarului' : 'Írd alá a kereten belül'}</p>
-                    <button type="button" id="clear-sig" style="background: none; border: none; color: #ef4444; font-size: 0.75rem; font-weight: 700; cursor: pointer; text-transform: uppercase;">
-                        {isRo ? 'Șterge' : 'Törlés'}
+                <p class="instr">{isRo ? '(Semnează olograf / de mână cât mai centrat pe linie pentru o încadrare bună. Folosește touchscreen-ul de pe telefon, tabletă, laptop etc.)' : '(Írd alá saját kezűleg, próbálj a vonal közepére írni. Használd a telefonod, tableted vagy laptopod érintőképernyőjét.)'}</p>
+                
+                <div class="consent-block" style="margin: 2rem 0;">
+                    <label class="checkbox-container">
+                        <input type="checkbox" required />
+                        <span class="checkmark"></span>
+                        <span class="label-text">{isRo ? 'Sunt de acord ca datele de identificare (nume, prenume și cod numeric personal/număr de identificare fiscală), precum și suma direcționată să fie comunicate entității beneficiare.' : 'Hozzájárulok, hogy az azonosító adataimat (vezetéknév, utónév és személyi szám/adószám), valamint a felajánlott összeget közöljék a kedvezményezett szervezettel.'}</span>
+                    </label>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1rem;">
+                    <span style="font-weight: 700; font-size: 0.9rem;">{isRo ? 'Semnează în chenar' : 'Írj a keretbe'}</span>
+                    <button type="button" id="clear-sig" class="btn-clear-sig">
+                        {isRo ? 'Semnătură nouă' : 'Új aláírás'}
                     </button>
                 </div>
                 <div class="canvas-wrapper">
-                    <canvas id="sig-canvas" height="200"></canvas>
+                    <canvas id="sig-canvas" height="300"></canvas>
                     <div class="sig-line"></div>
                 </div>
-            </div>
-
-            <div class="consent-block">
-                <label class="checkbox-container">
-                    <input type="checkbox" />
-                    <span class="checkmark"></span>
-                    <span class="label-text">{isRo ? 'Sunt de acord cu prelucrarea datelor cu caracter personal (GDPR).' : 'Hozzájárulok a személyes adataim kezeléséhez (GDPR).'}</span>
-                </label>
             </div>
 
             <div class="form-footer">
@@ -495,60 +557,129 @@ const isHu = lang === 'hu';
     margin-bottom: 3rem;
   }
 
-  .form-section-title {
-    font-size: 0.7rem;
-    font-weight: 800;
-    color: var(--primary);
-    background: rgba(79, 70, 229, 0.1);
-    padding: 0.4rem 0.75rem;
-    border-radius: 6px;
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+  .form-banner {
+    background: #818cf8;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    margin: 3rem 0 2rem;
+    text-align: center;
   }
+  .form-banner:first-child { margin-top: 0; }
 
   .form-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .input-group.mini { grid-column: span 1; }
+  
+  @media (min-width: 641px) {
+    .form-grid { grid-template-columns: repeat(12, 1fr); }
+    .input-group { grid-column: span 6; }
+    .input-group.mini { grid-column: span 2; }
+  }
+
+  /* Period Selection */
+  .period-selection {
+    display: flex;
     gap: 2rem;
     margin-bottom: 3rem;
   }
-  .input-group.full { grid-column: span 2; }
+  .radio-card {
+    flex: 1;
+    cursor: pointer;
+  }
+  .radio-card input { display: none; }
+  .radio-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    transition: all 0.2s;
+  }
+  .radio-check {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .radio-card input:checked + .radio-content {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1);
+  }
+  .radio-card input:checked + .radio-content .radio-check {
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+  .radio-card input:checked + .radio-content .radio-check::after {
+    content: '✓';
+    color: white;
+    font-weight: 900;
+    font-size: 14px;
+  }
+
+  .btn-clear-sig {
+    background: #f87171;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .btn-clear-sig:hover { opacity: 0.9; }
+
   .input-group label {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
   }
   .input-group input, .input-group select {
     width: 100%;
-    padding: 1rem;
+    padding: 0.875rem 1rem;
     background: #f8fafc;
-    border: 2px solid transparent;
-    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
     font-size: 1rem;
     color: var(--text-main);
     transition: all 0.2s;
   }
-  .input-group input:focus {
-    border-color: var(--primary-light);
+  .input-group input:focus, .input-group select:focus {
+    border-color: var(--primary);
     background: white;
     outline: none;
     box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
   }
 
   .signature-block { margin-bottom: 3rem; }
-  .instr { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; }
+  .instr { font-size: 0.85rem; color: #64748b; line-height: 1.6; margin-bottom: 2rem; font-style: italic; text-align: center; }
   .canvas-wrapper {
-    height: 200px;
-    background: #f8fafc;
-    border: 2px dashed #cbd5e1;
+    height: 300px;
+    background: white;
+    border: 1px solid #e2e8f0;
     border-radius: 16px;
     position: relative;
     cursor: crosshair;
     overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
   }
   #sig-canvas {
     position: absolute;
