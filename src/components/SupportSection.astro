@@ -155,55 +155,71 @@ const isHu = lang === 'hu';
     const countySelect = document.getElementById('county-select') as HTMLSelectElement;
     const citySelect = document.getElementById('city-select') as HTMLSelectElement;
 
-    const citiesByCounty = {
-        HR: [
-            "Miercurea Ciuc / Csíkszereda",
-            "Odorheiu Secuiesc / Székelyudvarhely",
-            "Gheorgheni / Gyergyószentmiklós",
-            "Toplița / Maroshévíz",
-            "Cristuru Secuiesc / Székelykeresztúr",
-            "Vlăhița / Szentegyháza",
-            "Borsec / Borszék",
-            "Băile Tușnad / Tusnádfürdő",
-            "Feliceni / Felsőboldogfalva",
-            "Lunca de Sus / Gyimesfelsőlok",
-            "Lunca de Jos / Gyimesközéplok",
-            "Praid / Parajd",
-            "Corund / Korond",
-            "Zetea / Zetelaka",
-            "Sărmaș / Salamás"
-        ],
-        CV: [
-            "Sfântu Gheorghe / Sepsiszentgyörgy",
-            "Târgu Secuiesc / Kézdivásárhely",
-            "Covasna / Kovászna",
-            "Baraolt / Barót",
-            "Întorsura Buzăului / Bodzaforduló",
-            "Bodoc / Sepsibodok",
-            "Ghelinca / Gelence",
-            "Ozun / Uzon",
-            "Reci / Réty",
-            "Turia / Torja"
-        ]
+    let allLocalities: any[] = [];
+
+    const loadLocalities = async () => {
+        try {
+            const response = await fetch('/localitati.json');
+            allLocalities = await response.json();
+            console.log('Localities loaded:', allLocalities.length);
+        } catch (error) {
+            console.error('Failed to load localities:', error);
+        }
     };
 
     if (countySelect && citySelect) {
+        // Start loading the JSON immediately
+        loadLocalities();
+
         countySelect.addEventListener('change', () => {
-            const county = countySelect.value;
+            const countyCode = countySelect.value;
             citySelect.innerHTML = '';
             
-            if (!county) {
+            if (!countyCode) {
                 const opt = document.createElement('option');
                 opt.textContent = "Előbb válassz megyét...";
                 citySelect.appendChild(opt);
                 return;
             }
 
-            const cities = citiesByCounty[county as keyof typeof citiesByCounty] || [];
-            cities.forEach(city => {
+            if (allLocalities.length === 0) {
                 const opt = document.createElement('option');
-                opt.value = city;
-                opt.textContent = city;
+                opt.textContent = "Betöltés...";
+                citySelect.appendChild(opt);
+                
+                // If not loaded yet, wait and try again
+                const checkInterval = setInterval(() => {
+                    if (allLocalities.length > 0) {
+                        clearInterval(checkInterval);
+                        countySelect.dispatchEvent(new Event('change'));
+                    }
+                }, 500);
+                return;
+            }
+
+            const filtered = allLocalities
+                .filter(loc => loc.auto === countyCode)
+                .sort((a, b) => a.diacritice.localeCompare(b.diacritice));
+
+            if (filtered.length === 0) {
+                const opt = document.createElement('option');
+                opt.textContent = "Nincs találat";
+                citySelect.appendChild(opt);
+                return;
+            }
+
+            // Default placeholder
+            const placeholder = document.createElement('option');
+            placeholder.value = "";
+            placeholder.textContent = "Válassz települést...";
+            placeholder.disabled = true;
+            placeholder.selected = true;
+            citySelect.appendChild(placeholder);
+
+            filtered.forEach(loc => {
+                const opt = document.createElement('option');
+                opt.value = loc.diacritice;
+                opt.textContent = loc.diacritice;
                 citySelect.appendChild(opt);
             });
         });
