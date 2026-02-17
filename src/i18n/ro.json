@@ -34,14 +34,13 @@
         "address": "Str. Morii nr. 34, Cristuru Secuiesc, Harghita"
     },
     "support": {
-        "tax_title": "2% / 3.5% Din Impozit",
-        "tax_text": "Sprijină activitatea noastră redirecționând o parte din impozitul pe venit. Este gratuit pentru tine, dar vital pentru noi!",
-        "tax_cta": "Descarcă Formularul",
-        "direct_title": "Donație Directă",
-        "direct_text": "Poți susține proiectele noastre prin transfer bancar:",
-        "bank_titular": "Titular",
-        "bank_iban": "IBAN",
-        "bank_bank": "Banca",
-        "bank_swift": "SWIFT"
+        "why_title": "De ce să ne susții?",
+        "why_text": "Asociația „O Șansă Pentru Comunitate” nu este susținută de mari proprietari sau oligarhi. Credem că forța unei comunități stă în propriile sale resurse și doar cu ajutorul tău putem lucra independent și eficient pentru dezvoltarea societății civile locale. Te rugăm să devii susținătorul nostru, pentru a ne putea continua munca.",
+        "donation_title": "Donație",
+        "method_card": "Card bancar",
+        "method_transfer": "Transfer",
+        "method_tax": "3,5%",
+        "form_notice": "Dacă formularul nu se afișează corect sau nu funcționează bine, redirecționarea poate fi făcută și [la acest link](https://redirectioneaza.ro).",
+        "form_title": "Redirecționează 3,5% din impozit"
     }
 }

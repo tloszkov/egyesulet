@@ -4,30 +4,119 @@ const { lang } = Astro.props;
 const t = useTranslations(lang as any);
 ---
 
-<section id="support" style="background: var(--bg-soft); padding: 6rem 0;">
-  <div class="container">
-    <div class="section-title">
-      <h2>{t('hero.cta_support')}</h2>
-      <div style="width: 60px; height: 4px; background: var(--color-secondary); margin: 0 auto; border-radius: 2px;"></div>
+<section id="support">
+  <!-- Why support us section (Dark) -->
+  <div style="background: #1e1e1e; color: white; padding: 6rem 0; text-align: center;">
+    <div class="container" style="max-width: 800px;">
+      <h2 style="font-size: 2.5rem; margin-bottom: 2rem; display: inline-block; border-bottom: 4px solid white; padding-bottom: 0.5rem;">
+        {t('support.why_title')}
+      </h2>
+      <p style="font-size: 1.25rem; line-height: 1.8; color: #d1d5db; text-align: justify;">
+        {t('support.why_text')}
+      </p>
     </div>
-    
-    <div class="grid-2" style="margin-top: 3rem;">
-      <div class="card" style="padding: 3rem; text-align: center;">
-        <h3 style="margin-bottom: 1.5rem;">{t('support.tax_title')}</h3>
-        <p style="margin-bottom: 2rem;">{t('support.tax_text')}</p>
-        <a href="#" class="btn btn-primary">{t('support.tax_cta')}</a>
+  </div>
+
+  <!-- Donation Methods section -->
+  <div style="background: white; padding: 6rem 0;">
+    <div class="container" style="max-width: 900px;">
+      <div style="text-align: center; margin-bottom: 4rem;">
+        <h2 style="font-size: 2.25rem; display: inline-block; background: #262626; color: white; padding: 0.5rem 1.5rem; border-radius: 4px;">
+          {t('support.donation_title')}
+        </h2>
       </div>
-      
-      <div class="card" style="padding: 3rem; text-align: center;">
-        <h3 style="margin-bottom: 1.5rem;">{t('support.direct_title')}</h3>
-        <p style="margin-bottom: 1rem;">{t('support.direct_text')}</p>
-        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; font-family: monospace; text-align: left;">
-          <p><strong>{t('support.bank_titular')}:</strong> Asociația O Șansă Pentru Comunitate</p>
-          <p><strong>{t('support.bank_iban')}:</strong> RO00 XXXX XXXX XXXX XXXX XXXX</p>
-          <p><strong>{t('support.bank_bank')}:</strong> BCR</p>
-          <p><strong>{t('support.bank_swift')}:</strong> RNCB ROBU</p>
+
+      <!-- Currency & Method Selectors (Visual only for now) -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem; margin-bottom: 3rem;">
+        <div style="display: flex; gap: 1rem;">
+          <button class="selector-btn">HUF</button>
+          <button class="selector-btn">EUR</button>
+          <button class="selector-btn active">RON</button>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+          <button class="selector-btn">{t('support.method_card')}</button>
+          <button class="selector-btn">{t('support.method_transfer')}</button>
+          <button class="selector-btn active">{t('support.method_tax')}</button>
+        </div>
+      </div>
+
+      <!-- Form Section (Form 230 info) -->
+      <div class="form-container">
+        <p style="margin-bottom: 2rem; font-size: 1.1rem;">
+           {t('support.form_notice').split('[')[0]}
+           <a href="https://redirectioneaza.ro" target="_blank" style="color: #e11d48; text-decoration: none; font-weight: 600;">
+             {t('support.form_notice').match(/\[(.*?)\]/)?.[1] || 'ezen a linken'}
+           </a>
+           {t('support.form_notice').split(']')[1]}
+        </p>
+
+        <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 3rem; background: #fff; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+          <div style="text-align: center; margin-bottom: 3rem;">
+            <img src="/logo.png" alt="Logo" style="height: 80px; width: auto; margin-bottom: 1.5rem;" />
+            <h3 style="color: #4f46e5; font-size: 1.75rem; margin-bottom: 1rem;">Asociația O Șansă Pentru Comunitate</h3>
+            <p style="font-size: 1.1rem; color: #4b5563;">{t('support.form_title')}</p>
+          </div>
+
+          <div style="background: #eef2ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; text-align: center;">
+            <p style="font-style: italic; color: #374151;">
+              {lang === 'hu' ? 'Töltse ki, írja alá és küldje el a 230-as űrlapot online.' : 'Completează, semnează și trimite formularul 230 online.'}
+              <br>
+              {lang === 'hu' ? 'Egyesületünk csapata gondoskodik az ANAF-hoz történő benyújtásról.' : 'Echipa organizației se va ocupa să depună formularul la ANAF.'}
+            </p>
+          </div>
+
+          <!-- Mock Form fields -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div style="background: #818cf8; color: white; padding: 0.75rem 1rem; border-radius: 4px; font-weight: 600; text-align: center;">
+              {lang === 'ro' ? 'Date de identificare a contribuabilului' : 'Adófizető azonosító adatai'}
+            </div>
+            <div class="mock-input">{lang === 'ro' ? 'Nume *' : 'Vezetéknév *'}</div>
+            <div class="mock-input">{lang === 'ro' ? 'Prenume *' : 'Keresztnév *'}</div>
+            <div class="mock-input">{lang === 'ro' ? 'CNP / NIF *' : 'Személyi szám (CNP) *'}</div>
+            <div class="mock-input">Email</div>
+            
+            <a href="https://redirectioneaza.ro/asociatia-o-sansa-pentru-comunitate" target="_blank" class="btn btn-primary" style="padding: 1.25rem; font-size: 1.25rem; text-align: center;">
+                {lang === 'hu' ? 'Tovább az online kitöltéshez' : 'Continuă la completarea online'}
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .selector-btn {
+    background: white;
+    border: 1px solid #262626;
+    color: #262626;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 80px;
+  }
+  .selector-btn:hover {
+    background: #f3f4f6;
+  }
+  .selector-btn.active {
+    background: #262626;
+    color: white;
+  }
+  .form-container {
+    text-align: center;
+    background: #f9fafb;
+    padding: 4rem 2rem;
+    border-radius: 20px;
+  }
+  .mock-input {
+    border-bottom: 2px solid #e2e8f0;
+    padding: 1rem 0;
+    text-align: left;
+    color: #94a3b8;
+    background: #f8fafc;
+    padding-left: 1rem;
+    border-radius: 4px;
+  }
+</style>

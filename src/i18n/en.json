@@ -34,14 +34,13 @@
         "address": "Str. Morii nr. 34, Cristuru Secuiesc, Harghita"
     },
     "support": {
-        "tax_title": "Tax Redirection (2% / 3.5%)",
-        "tax_text": "Support our activity by redirecting a part of your income tax. It's free for you, but vital for us!",
-        "tax_cta": "Download Form",
-        "direct_title": "Direct Donation",
-        "direct_text": "You can support our projects via bank transfer:",
-        "bank_titular": "Account Holder",
-        "bank_iban": "IBAN",
-        "bank_bank": "Bank",
-        "bank_swift": "SWIFT"
+        "why_title": "Why support us?",
+        "why_text": "The 'A Chance for the Community' Association is not supported by billionaire owners or oligarchs. We believe that the strength of a community lies in its own resources, and only with your help can we work independently and effectively for the development of local civil society. Please become our supporter, so we can continue our work.",
+        "donation_title": "Donation",
+        "method_card": "Credit Card",
+        "method_transfer": "Transfer",
+        "method_tax": "3,5%",
+        "form_notice": "If the form does not appear correctly or does not work well, the redirection can also be done [at this link](https://redirectioneaza.ro).",
+        "form_title": "Redirect 3.5% of your income tax"
     }
 }

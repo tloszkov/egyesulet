@@ -34,14 +34,13 @@
     "address": "Str. Morii nr. 34, Cristuru Secuiesc, Harghita"
   },
   "support": {
-    "tax_title": "Adó 2% / 3,5%",
-    "tax_text": "Támogasd tevékenységünket adód egy részének felajánlásával. Neked ingyenes, nekünk létfontosságú!",
-    "tax_cta": "Űrlap letöltése",
-    "direct_title": "Közvetlen támogatás",
-    "direct_text": "Banki átutalással is támogathatod projektjeinket:",
-    "bank_titular": "Kedvezményezett",
-    "bank_iban": "IBAN",
-    "bank_bank": "Bank",
-    "bank_swift": "SWIFT"
+    "why_title": "Miért támogassam?",
+    "why_text": "Az „Egy Esély a Közösségért Egyesület” mögött nem állnak milliárdos tulajdonosok vagy oligarchák. Hiszünk abban, hogy a közösség ereje a saját erőforrásaiban rejlik, és csak a ti segítségetekkel tudunk függetlenül és hatékonyan dolgozni a helyi civil társadalom fejlesztéséért. Kérjük, legyél te is a támogatónk, tegyél azért, hogy munkánkat folytatni tudjuk.",
+    "donation_title": "Támogatás",
+    "method_card": "Bankkártya",
+    "method_transfer": "Átutalás",
+    "method_tax": "3,5%",
+    "form_notice": "Ha az űrlap nem megfelelően jelenik meg, vagy nem működik jól, akkor az adófelajánlást [ezen a linken](https://redirectioneaza.ro) is meg lehet tenni.",
+    "form_title": "Rendelkezzen adója 3,5%-áról"
   }
 }
