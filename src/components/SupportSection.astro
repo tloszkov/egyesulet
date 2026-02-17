@@ -102,15 +102,17 @@ const isHu = lang === 'hu';
             <div class="form-grid">
                 <div class="input-group">
                     <label>Județ / Megye *</label>
-                    <select>
-                        <option value="">Selectează...</option>
-                        <option>Harghita</option>
-                        <option>Covasna</option>
+                    <select id="county-select">
+                        <option value="">{isRo ? 'Selectează Județ...' : 'Válassz megyét...'}</option>
+                        <option value="HR">Harghita / Hargita</option>
+                        <option value="CV">Covasna / Kovászna</option>
                     </select>
                 </div>
                 <div class="input-group">
                     <label>Localitate / Város *</label>
-                    <input type="text" placeholder="Ex: Cristuru Secuiesc" />
+                    <select id="city-select">
+                        <option value="">{isRo ? 'Selectează Județ mai întâi...' : 'Előbb válassz megyét...'}</option>
+                    </select>
                 </div>
             </div>
 
@@ -150,6 +152,62 @@ const isHu = lang === 'hu';
 <script>
     const canvas = document.getElementById('sig-canvas') as HTMLCanvasElement;
     const clearBtn = document.getElementById('clear-sig');
+    const countySelect = document.getElementById('county-select') as HTMLSelectElement;
+    const citySelect = document.getElementById('city-select') as HTMLSelectElement;
+
+    const citiesByCounty = {
+        HR: [
+            "Miercurea Ciuc / Csíkszereda",
+            "Odorheiu Secuiesc / Székelyudvarhely",
+            "Gheorgheni / Gyergyószentmiklós",
+            "Toplița / Maroshévíz",
+            "Cristuru Secuiesc / Székelykeresztúr",
+            "Vlăhița / Szentegyháza",
+            "Borsec / Borszék",
+            "Băile Tușnad / Tusnádfürdő",
+            "Feliceni / Felsőboldogfalva",
+            "Lunca de Sus / Gyimesfelsőlok",
+            "Lunca de Jos / Gyimesközéplok",
+            "Praid / Parajd",
+            "Corund / Korond",
+            "Zetea / Zetelaka",
+            "Sărmaș / Salamás"
+        ],
+        CV: [
+            "Sfântu Gheorghe / Sepsiszentgyörgy",
+            "Târgu Secuiesc / Kézdivásárhely",
+            "Covasna / Kovászna",
+            "Baraolt / Barót",
+            "Întorsura Buzăului / Bodzaforduló",
+            "Bodoc / Sepsibodok",
+            "Ghelinca / Gelence",
+            "Ozun / Uzon",
+            "Reci / Réty",
+            "Turia / Torja"
+        ]
+    };
+
+    if (countySelect && citySelect) {
+        countySelect.addEventListener('change', () => {
+            const county = countySelect.value;
+            citySelect.innerHTML = '';
+            
+            if (!county) {
+                const opt = document.createElement('option');
+                opt.textContent = "Előbb válassz megyét...";
+                citySelect.appendChild(opt);
+                return;
+            }
+
+            const cities = citiesByCounty[county as keyof typeof citiesByCounty] || [];
+            cities.forEach(city => {
+                const opt = document.createElement('option');
+                opt.value = city;
+                opt.textContent = city;
+                citySelect.appendChild(opt);
+            });
+        });
+    }
     
     if (canvas) {
         const ctx = canvas.getContext('2d');
