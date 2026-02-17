@@ -1,31 +1,72 @@
-# Feladatlista / Teendők (TODO) - OSPC Weboldal
+# Teljes TODO Lista - Egy Esély a Közösségért Egyesület
 
-Ez a lista összefoglalja a weboldal fejlesztésének aktuális állását és a hátralévő technikai/tartalmi lépéseket.
+Ez a dokumentum tartalmazza az összes olyan lépést, amely egy profi, bizalomépítő és hatékony nonprofit weboldalhoz szükséges.
 
-## 🟢 Elkészült (Done)
-- [x] **Alap struktúra**: Vite + Vanilla JS + Modern CSS (Inter font, Glassmorphism).
-- [x] **Többnyelvűség (i18n)**: HU, RO, EN nyelvváltó működik.
-- [x] **Logó integráció**: Hivatalos logó a helyén, "O Șansă" szöveg eltávolítva a fejlécből.
-- [x] **Rólunk szekció**: Kibővítve a hivatalos okiratok alapján (történet, alapítók, pillérek).
-- [x] **Elérhetőségek**: `office@ospc.ro` és elnöki e-mail (`kzsolt@ospc.ro`) a láblécben.
-- [x] **Deployment**: GitHub repo összekötve a Cloudflare Pages-szel (automatikus build).
+---
 
-## 🟡 Folyamatban / Szükséges (In Progress)
-- [ ] **Domain aktiválás**: `ospc.ro` átirányítása az új Pages projektre (a régi projektből való törlés után).
-- [ ] **Facebook API Integráció**:
-    - [ ] Facebook Developer App létrehozása.
-    - [ ] Access Token generálása (posztok olvasásához).
-    - [ ] Cloudflare Worker írása a biztonságos API híváshoz.
-- [ ] **Tartalomkezelés (Markdown)**:
-    - [ ] `content/` mappa struktúra kialakítása.
-    - [ ] Dinamikus betöltő írása a projektekhez és hírekhez.
+## 🟢 1. Technikai Alapok (Elkészült)
+- [x] **Fejlesztői környezet**: Vite + Vanilla JS + CSS alapok.
+- [x] **Dizájn rendszer**: Színpaletta (logó alapján), Inter betűtípus, üveghatás (glassmorphism).
+- [x] **Reszponzivitás**: Mobilbarát menü és elrendezés.
+- [x] **Deployment**: GitHub repository és Cloudflare Pages összekötése.
+- [x] **Verziókövetés**: Működő Git folyamat.
 
-## 🔴 Teendők a USER részéről (User Input Needed)
-- [ ] **Projektek adatai**: 1-2 mondatos leírás és képek a futó/lezárt projektekről.
-- [ ] **Képek**: Valódi fotók az egyesület életéből a helyőrzők helyére (pl. `about` szekció).
-- [ ] **GDPR / Adatvédelem**: Hivatalos adatkezelési tájékoztató szövegének feltöltése.
+---
 
-## 🚀 Jövőbeli tervek (Roadmap)
-- [ ] **Adományozási modul**: Interaktív 1% / Banki adatok szekció.
-- [ ] **Eseménynaptár**: Közelgő programok listázása.
-- [ ] **Önkéntes jelentkezés**: Beépített űrlap az érdeklődőknek.
+## 🟡 2. Tartalom és Identitás (Folyamatban)
+- [x] **Hivatalos név**: Megadva (Egy Esély a Közösségért Egyesület).
+- [x] **Rólunk szekció**: Kezdő szöveg az alapító okirat alapján.
+- [ ] **Képek cseréje**: Valódi, jó minőségű fotók az egyesület életéből a helyőrzők helyére. (Kérdés: Vannak nagy felbontású fotóid?)
+- [ ] **Projektek részletezése**: 
+    - [ ] Futó projektek listája (Név, cél, célcsoport).
+    - [ ] Lezárt projektek galériája (Eredmények, tanulságok).
+- [ ] **Küldetés pontosítása**: Vannak-e cụm (szlogen) javaslataid?
+
+---
+
+## 🟡 3. Többnyelvűség (i18n)
+- [x] **Struktúra**: HU, RO, EN váltó működik.
+- [ ] **Fordítások teljesítése**: Minden jövőbeli tartalom (projektek, hírek) megírása mindhárom nyelven.
+- [ ] **Nyelv-specifikus linkek**: Ha vannak pl. román nyelvű pályázati kiírások, azok külön kezelése.
+
+---
+
+## 🟠 4. Hitelesség és Átláthatóság (Kiemelten Fontos!)
+- [ ] **1% / 2% Adófelajánlás**: Figyelemfelkeltő doboz, letölthető nyilatkozattal (vagy online kitöltési segédlettel).
+- [ ] **Támogatási adatok**: Bankszámlaszám, SWIFT kód, adományozási célok.
+- [ ] **Éves beszámolók**: Egy „Letöltések” vagy „Átláthatóság” fül a közhasznúsági jelentéseknek (PDF-ek).
+- [ ] **Partnerek**: Logó-fal a támogatóknak, önkormányzatoknak, cégeknek.
+
+---
+
+## 🟠 5. Közösség és Bevonás
+- [ ] **Facebook Integráció**: 
+    - [ ] Facebook API beállítása a posztok automatikus megjelenítéséhez.
+    - [ ] Messenger chat buborék (Opcionális: Szeretnél ilyet?).
+- [ ] **Önkéntes toborzás**: Egy egyszerű űrlap: „Miben tudnál segíteni?” (pl. fizikai munka, adminisztráció, szakmai tudás).
+- [ ] **Hírlevél (Opcionális)**: Feliratkozás a legfontosabb hírekre.
+
+---
+
+## 🔴 6. Jogi és Biztonsági megfelelés
+- [x] **SSL Tanúsítvány**: Cloudflare-en keresztül aktív.
+- [ ] **GDPR Adatkezelés**: 
+    - [ ] Adatkezelési tájékoztató (Privacy Policy) oldal/link.
+    - [ ] Cookie banner (Süti kezelő).
+- [ ] **Domain véglegesítés**: `ospc.ro` átirányítás befejezése (Custom Domain Cloudflare-en).
+
+---
+
+## 🔴 7. SEO és Analitika
+- [ ] **Google Search Console**: Webhely indexelése.
+- [ ] **Google Analytics / Cloudflare Web Analytics**: Látogatottság mérése (honnan jönnek a látogatók?).
+- [ ] **Meta tagek finomítása**: Megfelelő megosztási kép (OpenGraph) beállítása (amikor beilleszted a linket Facebookra, mi jelenjen meg?).
+
+---
+
+# ❓ Kérdések a USER felé a folytatáshoz:
+
+1. **Adományozás**: Szeretnél már most egy hangsúlyos „Támogass minket” blokkot a főoldalra banki adatokkal?
+2. **Képek**: Küldesz fotókat, vagy használjak prémium stock fotókat (pl. közösség, segítségnyújtás témában), amíg nincsenek sajátok?
+3. **Pályázatok**: Van-e jelenleg olyan futó pályázat, amit külön ki kellene emelnünk egy gombbal?
+4. **Messenger**: Legyen-e "élő" csetelési lehetőség az oldalon keresztül?

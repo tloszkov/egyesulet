@@ -1,0 +1,67 @@
+---
+import { useTranslations } from '../i18n/utils';
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
+---
+
+<header>
+  <div class="container nav-wrapper">
+    <nav>
+      <div class="logo-container">
+        <a href={lang === 'ro' ? '/' : `/${lang}/`}>
+          <img src="/logo.png" alt="Logo" style="height: 48px; width: auto;" />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">{t('nav.home')}</a></li>
+        <li><a href="#about">{t('nav.about')}</a></li>
+        <li><a href="#projects">{t('nav.projects')}</a></li>
+        <li><a href="#news">{t('nav.news')}</a></li>
+        <li><a href="#contact">{t('nav.contact')}</a></li>
+      </ul>
+      <div class="lang-switcher">
+        <a href="/" class={`lang-btn ${lang === 'ro' ? 'active' : ''}`}>RO</a>
+        <a href="/hu/" class={`lang-btn ${lang === 'hu' ? 'active' : ''}`}>HU</a>
+        <a href="/en/" class={`lang-btn ${lang === 'en' ? 'active' : ''}`}>EN</a>
+      </div>
+      <button class="mobile-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle logic
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  }
+
+  // Close menu when link is clicked
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks?.classList.remove('active');
+    });
+  });
+
+  // Sticky header logic
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (header) {
+      if (window.scrollY > 50) {
+        header.style.padding = '0.5rem 0';
+        header.style.boxShadow = 'var(--shadow-md)';
+      } else {
+        header.style.padding = '1rem 0';
+        header.style.boxShadow = 'none';
+      }
+    }
+  });
+</script>
