@@ -81,7 +81,7 @@ const isHu = lang === 'hu';
             </div>
         </div>
 
-        <form class="modern-form">
+        <form class="modern-form" id="support-form">
             <div class="form-section-title">01. {isRo ? 'Identificare' : 'Azonosítás'}</div>
             <div class="form-grid">
                 <div class="input-group">
@@ -94,7 +94,8 @@ const isHu = lang === 'hu';
                 </div>
                 <div class="input-group full">
                     <label>CNP / Személyi szám *</label>
-                    <input type="text" placeholder="1234567890..." />
+                    <input type="text" id="cnp-input" placeholder="1XXXXXXXXXXXX" maxlength="13" />
+                    <span id="cnp-error" class="error-msg" style="display: none; color: #ef4444; font-size: 0.75rem; font-weight: 600; margin-top: 0.25rem;"></span>
                 </div>
             </div>
 
@@ -285,6 +286,60 @@ const isHu = lang === 'hu';
 
         clearBtn?.addEventListener('click', () => {
             ctx?.clearRect(0, 0, canvas.width, canvas.height);
+        });
+    }
+
+    // CNP Validation Logic
+    const validateCNP = (cnp: string) => {
+        if (!/^\d{13}$/.test(cnp)) return false;
+        
+        const weights = [2, 7, 9, 1, 4, 6, 3, 5, 8, 2, 7, 9];
+        const s = parseInt(cnp[0]);
+        if (s === 0 || s === 9) return false; // S must be 1-8
+
+        let sum = 0;
+        for (let i = 0; i < 12; i++) {
+            sum += parseInt(cnp[i]) * weights[i];
+        }
+
+        let remainder = sum % 11;
+        const controlDigit = remainder === 10 ? 1 : remainder;
+
+        return controlDigit === parseInt(cnp[12]);
+    };
+
+    const form = document.getElementById('support-form') as HTMLFormElement;
+    const cnpInput = document.getElementById('cnp-input') as HTMLInputElement;
+    const cnpError = document.getElementById('cnp-error') as HTMLElement;
+
+    if (form && cnpInput && cnpError) {
+        form.addEventListener('submit', (e) => {
+            const cnpVal = cnpInput.value.trim();
+            const isValid = validateCNP(cnpVal);
+
+            if (!isValid) {
+                e.preventDefault();
+                cnpError.textContent = "CNP invalid. Te rugăm să verifici cifrele.";
+                cnpError.style.display = 'block';
+                cnpInput.style.borderColor = "#ef4444";
+                cnpInput.focus();
+                
+                // Hungarian message if needed (basic check)
+                if (document.documentElement.lang === 'hu') {
+                    cnpError.textContent = "Érvénytelen CNP (személyi szám). Kérjük ellenőrizd a számjegyeket.";
+                }
+            } else {
+                cnpError.style.display = 'none';
+                cnpInput.style.borderColor = "";
+                // Here we would normally let the form submit or handle via AJAX
+                alert("Formularul a fost validat cu succes!");
+            }
+        });
+
+        // Hide error on input
+        cnpInput.addEventListener('input', () => {
+            cnpError.style.display = 'none';
+            cnpInput.style.borderColor = "";
         });
     }
 </script>
