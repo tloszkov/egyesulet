@@ -16,10 +16,10 @@ const t = useTranslations(lang as any);
         </h1>
         <p class="hero-p">{t('hero.description')}</p>
         <div class="hero-actions">
-          <a href={lang === 'ro' ? '/sustine-ne' : `/${lang}/tamogatas`} class="btn btn-primary btn-lg">
+          <a href={lang === 'ro' ? '/sustine-ne' : lang === 'hu' ? '/hu/tamogatas' : '/en/support'} class="btn btn-primary btn-lg">
             {t('hero.cta_support')}
           </a>
-          <a href="#about" class="btn btn-secondary btn-lg">
+          <a href={lang === 'ro' ? '/despre-noi' : lang === 'hu' ? '/hu/rolunk' : '/en/about'} class="btn btn-secondary btn-lg">
             {t('nav.about')}
           </a>
         </div>

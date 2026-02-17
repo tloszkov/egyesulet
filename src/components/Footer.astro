@@ -22,9 +22,9 @@ const currentYear = new Date().getFullYear();
       <div class="footer-links">
         <h4 style="margin-bottom: 2rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: #4f46e5;">Linkek</h4>
         <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
-          <li><a href="#about" class="footer-link-item">{t('nav.about')}</a></li>
-          <li><a href="#projects" class="footer-link-item">{t('nav.projects')}</a></li>
-          <li><a href="#news" class="footer-link-item">{t('nav.news')}</a></li>
+          <li><a href={lang === 'ro' ? '/despre-noi' : lang === 'hu' ? '/hu/rolunk' : '/en/about'} class="footer-link-item">{t('nav.about')}</a></li>
+          <li><a href={lang === 'ro' ? '/proiecte' : lang === 'hu' ? '/hu/projektek' : '/en/projects'} class="footer-link-item">{t('nav.projects')}</a></li>
+          <li><a href={lang === 'ro' ? '/stiri' : lang === 'hu' ? '/hu/hirek' : '/en/news'} class="footer-link-item">{t('nav.news')}</a></li>
           <li><a href="/privacy" class="footer-link-item">Privacy Policy</a></li>
         </ul>
       </div>
