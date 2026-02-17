@@ -10,17 +10,17 @@ const links = {
 }[lang as 'ro' | 'hu' | 'en'];
 ---
 
-<header>
-  <div class="container nav-wrapper">
-    <nav>
-      <div class="logo-container">
-        <a href={lang === 'ro' ? '/' : `/${lang}/`} style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
-          <img src="/logo.png" alt="Logo" style="height: 42px; width: auto;" />
-          <span style="font-weight: 800; font-size: 1.25rem; color: var(--text-main); letter-spacing: -0.01em;">OSPC</span>
-        </a>
-      </div>
-      
-      <ul class="nav-links">
+<header id="main-header">
+  <div class="container header-flex">
+    <div class="header-logo-container">
+      <a href={lang === 'ro' ? '/' : `/${lang}/`} class="header-logo-link">
+        <img src="/logo.png" alt="OSPC" class="header-logo-img" />
+        <span class="header-logo-text">OSPC</span>
+      </a>
+    </div>
+
+    <nav class="header-nav-desktop">
+      <ul class="header-nav-links">
         <li><a href={lang === 'ro' ? '/' : `/${lang}/`}>{t('nav.home')}</a></li>
         <li><a href={links.about}>{t('nav.about')}</a></li>
         <li><a href={links.projects}>{t('nav.projects')}</a></li>
@@ -28,62 +28,201 @@ const links = {
         <li><a href={links.contact}>{t('nav.contact')}</a></li>
       </ul>
 
-      <div style="display: flex; align-items: center; gap: 1.5rem;">
-        <div class="lang-selector">
+      <div class="header-nav-actions">
+        <div class="header-langs">
           <a href="/" class={lang === 'ro' ? 'active' : ''}>RO</a>
           <a href="/hu/" class={lang === 'hu' ? 'active' : ''}>HU</a>
           <a href="/en/" class={lang === 'en' ? 'active' : ''}>EN</a>
         </div>
-        <a href={links.support} class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size: 0.9rem; border-radius: 10px;">
+        <a href={links.support} class="btn btn-primary header-support-btn">
           {t('hero.cta_support')}
         </a>
       </div>
+    </nav>
 
-      <button class="mobile-toggle" id="menu-toggle">
-        <span></span><span></span><span></span>
-      </button>
+    <button class="header-mobile-toggle" id="menu-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="header-mobile-menu" id="mobile-menu">
+    <nav class="header-mobile-nav">
+      <a href={lang === 'ro' ? '/' : `/${lang}/`}>{t('nav.home')}</a>
+      <a href={links.about}>{t('nav.about')}</a>
+      <a href={links.projects}>{t('nav.projects')}</a>
+      <a href={links.news}>{t('nav.news')}</a>
+      <a href={links.contact}>{t('nav.contact')}</a>
+      <div class="header-mobile-divider"></div>
+      <div class="header-mobile-langs">
+        <a href="/" class={lang === 'ro' ? 'active' : ''}>RO</a>
+        <a href="/hu/" class={lang === 'hu' ? 'active' : ''}>HU</a>
+        <a href="/en/" class={lang === 'en' ? 'active' : ''}>EN</a>
+      </div>
+      <a href={links.support} class="btn btn-primary btn-full">{t('hero.cta_support')}</a>
     </nav>
   </div>
 </header>
 
+<script is:inline>
+  (function() {
+    function setupNav() {
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (!toggle || !menu) return;
+
+      toggle.onclick = (e) => {
+        e.preventDefault();
+        const isOpen = menu.classList.toggle('active');
+        toggle.classList.toggle('active');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      };
+
+      const links = menu.querySelectorAll('a');
+      links.forEach(link => {
+        link.onclick = () => {
+          menu.classList.remove('active');
+          toggle.classList.remove('active');
+          document.body.style.overflow = '';
+        };
+      });
+    }
+
+    setupNav();
+    document.addEventListener('astro:page-load', setupNav);
+  })();
+</script>
+
 <style>
-  .lang-selector {
+  #main-header {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    height: 5rem;
     display: flex;
-    gap: 0.5rem;
+    align-items: center;
+  }
+  .header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .header-logo-container {
+    flex-shrink: 0;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .header-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    height: 2.5rem;
+  }
+  .header-logo-img {
+    height: 2.5rem !important;
+    width: 2.5rem !important;
+    min-width: 2.5rem !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+  .header-logo-text {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: #1e293b;
+    white-space: nowrap;
+  }
+  .header-nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  .header-nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0; padding: 0;
+  }
+  .header-nav-links a {
+    text-decoration: none;
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .header-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .header-langs {
+    display: flex;
+    gap: 8px;
     background: #f1f5f9;
-    padding: 0.25rem;
+    padding: 4px;
     border-radius: 8px;
   }
-  .lang-selector a {
+  .header-langs a {
     text-decoration: none;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #64748b;
+    padding: 4px 8px;
     border-radius: 6px;
-    transition: all 0.2s;
   }
-  .lang-selector a.active {
-    background: white;
-    color: var(--primary);
-    box-shadow: var(--shadow-sm);
-  }
-  .mobile-toggle {
+  .header-langs a.active { background: white; color: var(--primary); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .header-support-btn { padding: 8px 16px; font-size: 0.85rem; }
+
+  /* Mobile */
+  .header-mobile-toggle {
     display: none;
     flex-direction: column;
-    gap: 4px;
-    background: none;
-    border: none;
+    justify-content: center;
+    gap: 5px;
+    width: 40px; height: 40px;
+    background: #f1f5f9;
+    border: none; border-radius: 8px;
     cursor: pointer;
+    z-index: 10001;
   }
-  .mobile-toggle span {
-    width: 24px;
-    height: 2px;
-    background: var(--text-main);
-    border-radius: 2px;
+  .header-mobile-toggle span {
+    display: block;
+    width: 20px; height: 2px;
+    background: #1e293b;
+    margin: 0 auto;
+    transition: 0.3s;
   }
-  @media (max-width: 768px) {
-    .mobile-toggle { display: flex; }
-    .nav-links, .lang-selector, .btn-primary { display: none; }
+  .header-mobile-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .header-mobile-toggle.active span:nth-child(2) { opacity: 0; }
+  .header-mobile-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .header-mobile-menu {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    background: white;
+    z-index: 10000;
+    display: none;
+    padding: 100px 20px 20px;
+  }
+  .header-mobile-menu.active { display: block; }
+  .header-mobile-nav { display: flex; flex-direction: column; gap: 20px; }
+  .header-mobile-nav a {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    text-decoration: none;
+  }
+  .header-mobile-divider { height: 1px; background: #f1f5f9; margin: 10px 0; }
+  .header-mobile-langs { display: flex; gap: 15px; margin-bottom: 20px; }
+  .header-mobile-langs a { font-weight: 700; color: #64748b; text-decoration: none; }
+  .header-mobile-langs a.active { color: var(--primary); }
+  .btn-full { width: 100%; text-align: center; }
+
+  @media (max-width: 960px) {
+    .header-nav-desktop { display: none; }
+    .header-mobile-toggle { display: flex; }
   }
 </style>

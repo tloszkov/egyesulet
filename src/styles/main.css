@@ -48,6 +48,10 @@ body {
     padding: 0 2rem;
 }
 
+body.no-scroll {
+    overflow: hidden;
+}
+
 /* Premium Typography */
 h1,
 h2,
@@ -213,17 +217,31 @@ header.scrolled {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 0 1.25rem;
+    }
 
     .grid-2,
     .grid-3 {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
-    .nav-links {
-        display: none;
+    .section-title {
+        margin-bottom: 2.5rem;
     }
 
     .section-title h2 {
-        font-size: 2.25rem;
+        font-size: 2rem;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none !important;
     }
 }

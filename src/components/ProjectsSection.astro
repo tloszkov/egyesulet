@@ -24,7 +24,7 @@ const projects = await getCollection('projects', ({ id }) => {
         </div>
       )) : (
         <div style="grid-column: 1 / -1; text-align: center; color: #64748b;">
-          <p>Aproape gata! În curând vom publica primele noastre proiecte.</p>
+          <p>{lang === 'hu' ? 'Hamarosan jelentkezünk! Hamarosan közzétesszük első projektjeinket.' : lang === 'ro' ? 'Aproape gata! În curând vom publica primele noastre proiecte.' : 'Almost ready! We will soon publish our first projects.'}</p>
         </div>
       )}
     </div>

@@ -29,9 +29,14 @@
     },
     "contact": {
         "email": "office@ospc.ro",
-        "president": "President: Kovács Zsolt",
+        "president": "President",
         "president_email": "kzsolt@ospc.ro",
-        "address": "Str. Morii nr. 34, Cristuru Secuiesc, Harghita"
+        "address": "Str. Morii nr. 34, Cristuru Secuiesc, Harghita",
+        "form_title": "Send us a message",
+        "name": "Name",
+        "email_label": "Email Address",
+        "message": "Message",
+        "send": "Send Message"
     },
     "support": {
         "why_title": "Why support us?",
@@ -41,6 +46,24 @@
         "method_transfer": "Transfer",
         "method_tax": "3,5%",
         "form_notice": "If the form does not appear correctly or does not work well, the redirection can also be done [at this link](https://redirectioneaza.ro).",
-        "form_title": "Redirect 3.5% of your income tax"
+        "form_title": "Redirect 3.5% of your income tax",
+        "donation_type": "Type",
+        "recurring": "Recurring",
+        "one_time": "One-time",
+        "amount": "Amount",
+        "custom_amount": "Custom amount",
+        "email_label": "Email address",
+        "last_name": "Last Name",
+        "first_name": "First Name",
+        "terms_1": "I have read and accept the Privacy Policy.",
+        "terms_2": "I declare that I have read and agree to the Terms and Conditions and Privacy Policy.",
+        "submit_donation": "Support",
+        "transfer_details": "Transfer Details",
+        "beneficiary": "Beneficiary",
+        "iban": "Account (IBAN)",
+        "bank_name": "Bank",
+        "transfer_note": "Reference",
+        "transfer_note_val": "DONATION",
+        "transfer_help": "If you wish to be registered as a supporter in our system, please include your email address in the transfer reference!"
     }
 }

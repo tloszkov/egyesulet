@@ -29,9 +29,14 @@
   },
   "contact": {
     "email": "office@ospc.ro",
-    "president": "Elnök: Kovács Zsolt",
+    "president": "Elnök",
     "president_email": "kzsolt@ospc.ro",
-    "address": "Str. Morii nr. 34, Cristuru Secuiesc, Harghita"
+    "address": "Str. Morii nr. 34, Cristuru Secuiesc, Harghita",
+    "form_title": "Üzenetküldés",
+    "name": "Név",
+    "email_label": "Email cím",
+    "message": "Üzenet",
+    "send": "Küldés"
   },
   "support": {
     "why_title": "Miért támogassam?",
@@ -41,6 +46,24 @@
     "method_transfer": "Átutalás",
     "method_tax": "3,5%",
     "form_notice": "Ha az űrlap nem megfelelően jelenik meg, vagy nem működik jól, akkor az adófelajánlást [ezen a linken](https://redirectioneaza.ro) is meg lehet tenni.",
-    "form_title": "Rendelkezzen adója 3,5%-áról"
+    "form_title": "Rendelkezzen adója 3,5%-áról",
+    "donation_type": "Típus",
+    "recurring": "Rendszeres",
+    "one_time": "Egyszeri",
+    "amount": "Összeg",
+    "custom_amount": "Egyedi összeg",
+    "email_label": "E-mail cím",
+    "last_name": "Vezetéknév",
+    "first_name": "Utónév",
+    "terms_1": "Az Adatkezelési tájékoztatót megismertem és elfogadom.",
+    "terms_2": "Kijelentem, hogy az Általános Szerződési Feltételeket és az Adatvédelmi tájékoztatót megismertem, az abban foglaltakkal egyetértek.",
+    "submit_donation": "Támogatom",
+    "transfer_details": "Átutalási adatok",
+    "beneficiary": "Kedvezményezett",
+    "iban": "Bankszámlaszám (IBAN)",
+    "bank_name": "Bank",
+    "transfer_note": "Közlemény",
+    "transfer_note_val": "ADOMANY",
+    "transfer_help": "Ha azt szeretnéd, hogy támogatóként is regisztráljunk a rendszerünkben, kérjük add meg a közleményben az e-mail címedet!"
   }
 }

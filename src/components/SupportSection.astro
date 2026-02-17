@@ -5,6 +5,7 @@ const t = useTranslations(lang as any);
 
 const isRo = lang === 'ro';
 const isHu = lang === 'hu';
+const isEn = lang === 'en';
 ---
 
 <section id="support-premium">
@@ -32,19 +33,19 @@ const isHu = lang === 'hu';
       <div class="ui-pitch reveal">
           <div class="floating-controls">
               <div class="ctrl-group">
-                  <label>{isHu ? 'Pénznem' : 'Currency'}</label>
-                  <div class="pill-group">
-                      <button>HUF</button>
-                      <button>EUR</button>
-                      <button class="active">RON</button>
+                  <label>{isHu ? 'Típus' : isRo ? 'Tip' : 'Type'}</label>
+                  <div class="pill-group" id="type-selector">
+                      <button data-type="card">{t('support.method_card')}</button>
+                      <button data-type="transfer">{t('support.method_transfer')}</button>
+                      <button class="active" data-type="tax">{t('support.method_tax')}</button>
                   </div>
               </div>
-              <div class="ctrl-group">
-                  <label>{isHu ? 'Típus' : 'Type'}</label>
-                  <div class="pill-group">
-                      <button>{t('support.method_card')}</button>
-                      <button>{t('support.method_transfer')}</button>
-                      <button class="active">{t('support.method_tax')}</button>
+              <div class="ctrl-group animate-expand" id="currency-group">
+                  <label>{isHu ? 'Pénznem' : isRo ? 'Monedă' : 'Currency'}</label>
+                  <div class="pill-group" id="currency-selector">
+                      <button data-currency="HUF">HUF</button>
+                      <button data-currency="EUR">EUR</button>
+                      <button class="active" data-currency="RON">RON</button>
                   </div>
               </div>
           </div>
@@ -58,43 +59,45 @@ const isHu = lang === 'hu';
       
       <div class="notice-card">
         <p>
-            {isHu ? 'Ha az űrlap nem jelenik meg megfelelően, felajánlásod ' : 'Dacă formularul nu este afișat corect, poți dona '} 
-            <a href="https://redirectioneaza.ro" target="_blank">{isHu ? 'ezen a biztonságos linken' : 'prin acest link securizat'}</a> 
-            {isHu ? 'is elvégezheted.' : ' de asemenea.'}
+            {isHu ? 'Ha az űrlap nem jelenik meg megfelelően, felajánlásod ' : isRo ? 'Dacă formularul nu este afișat corect, poți dona ' : 'If the form is not displayed correctly, you can donate '} 
+            <a href="https://redirectioneaza.ro" target="_blank">{isHu ? 'ezen a biztonságos linken' : isRo ? 'prin acest link securizat' : 'via this secure link'}</a> 
+            {isHu ? 'is elvégezheted.' : isRo ? ' de asemenea.' : ' as well.'}
         </p>
       </div>
 
-      <div class="saas-form-card reveal">
-        <div class="form-header">
-            <div class="org-info">
-                <img src="/logo.png" alt="Logo" class="mini-logo" />
-                <div>
-                    <h3>Asociația O Șansă Pentru Comunitate</h3>
-                    <p>{t('support.form_title')}</p>
+        <div class="saas-form-card reveal">
+          <!-- Tax Redirection Form (Original) -->
+          <div id="tax-form-content">
+            <div class="form-header">
+                <div class="org-info">
+                    <img src="/logo.png" alt="Logo" class="mini-logo" />
+                    <div>
+                        <h3>{isEn ? 'A Chance for the Community Association' : isHu ? 'Egy Esély a Közösségért Egyesület' : 'Asociația O Șansă Pentru Comunitate'}</h3>
+                        <p>{t('support.form_title')}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="step-guide">
-            <div class="guide-box">
-                {isHu ? 'Kitöltés online → Hitelesítés → Automatikus beküldés az ANAF-hoz.' : 'Completează online → Semnează → Depunere automată la ANAF.'}
+    
+            <div class="step-guide">
+                <div class="guide-box">
+                    {isHu ? 'Kitöltés online → Hitelesítés → Automatikus beküldés az ANAF-hoz.' : isRo ? 'Completează online → Semnează → Depunere automată la ANAF.' : 'Complete online → Sign → Automatic submission to ANAF.'}
+                </div>
             </div>
-        </div>
-
-        <form class="modern-form" id="support-form">
+    
+            <form class="modern-form" id="support-form">
             <!-- Section 1: Identification -->
-            <div class="form-banner">{isRo ? 'Date de identificare a contribuabilului' : 'Adózó azonosító adatai'}</div>
+            <div class="form-banner">{isRo ? 'Date de identificare a contribuabilului' : isHu ? 'Adózó azonosító adatai' : 'Taxpayer Identification Data'}</div>
             <div class="form-grid">
                 <div class="input-group">
-                    <label>{isRo ? 'Nume *' : 'Vezetéknév *'}</label>
-                    <input type="text" placeholder="Ex: Popescu" required />
+                    <label>{isRo ? 'Nume *' : isHu ? 'Vezetéknév *' : 'Last Name *'}</label>
+                    <input type="text" placeholder={isEn ? "Ex: Smith" : "Ex: Popescu"} required />
                 </div>
                 <div class="input-group">
-                    <label>{isRo ? 'Prenume *' : 'Utónév *'}</label>
-                    <input type="text" placeholder="Ex: Ion" required />
+                    <label>{isRo ? 'Prenume *' : isHu ? 'Utónév *' : 'First Name *'}</label>
+                    <input type="text" placeholder={isEn ? "Ex: John" : "Ex: Ion"} required />
                 </div>
                 <div class="input-group">
-                    <label>{isRo ? 'Inițială Tată (opțional)' : 'Apa kezdőbetűje (opcionális)'}</label>
+                    <label>{isRo ? 'Inițială Tată (opțional)' : isHu ? 'Apa kezdőbetűje (opcionális)' : "Father's Initial (optional)"}</label>
                     <input type="text" placeholder="Ex: A." />
                 </div>
                 <div class="input-group">
@@ -107,36 +110,36 @@ const isHu = lang === 'hu';
                     <input type="email" placeholder="email@example.com" required />
                 </div>
                 <div class="input-group">
-                    <label>{isRo ? 'Telefon (opțional)' : 'Telefonszám (opcionális)'}</label>
+                    <label>{isRo ? 'Telefon (opțional)' : isHu ? 'Telefonszám (opcionális)' : 'Phone (optional)'}</label>
                     <input type="tel" placeholder="07xx xxx xxx" />
                 </div>
             </div>
 
             <!-- Section 2: Address -->
-            <div class="form-banner">{isRo ? 'Adresa de domiciliu (conform actului de identitate)' : 'Lakcím (a személyi igazolvány szerint)'}</div>
+            <div class="form-banner">{isRo ? 'Adresa de domiciliu (conform actului de identitate)' : isHu ? 'Lakcím (a személyi igazolvány szerint)' : 'Home Address (per identity document)'}</div>
             <div class="form-grid">
                 <div class="input-group">
-                    <label>{isRo ? 'Județ *' : 'Megye *'}</label>
+                    <label>{isRo ? 'Județ *' : isHu ? 'Megye *' : 'County *'}</label>
                     <select id="county-select" required>
-                        <option value="">{isRo ? 'Selectează Județ...' : 'Válassz megyét...'}</option>
+                        <option value="">{isRo ? 'Selectează Județ...' : isHu ? 'Válassz megyét...' : 'Select County...'}</option>
                     </select>
                 </div>
                 <div class="input-group">
-                    <label>{isRo ? 'Localitate *' : 'Település *'}</label>
+                    <label>{isRo ? 'Localitate *' : isHu ? 'Település *' : 'Locality *'}</label>
                     <select id="city-select" required>
-                        <option value="">{isRo ? 'Előbb válassz megyét...' : 'Előbb válassz megyét...'}</option>
+                        <option value="">{isRo ? 'Előbb válassz megyét...' : isHu ? 'Előbb válassz megyét...' : 'Select county first...'}</option>
                     </select>
                 </div>
                 <div class="input-group">
-                    <label>{isRo ? 'Cod poștal' : 'Irányítószám'}</label>
+                    <label>{isRo ? 'Cod poștal' : isHu ? 'Irányítószám' : 'Postal Code'}</label>
                     <input type="text" placeholder="XXXXXX" />
                 </div>
                 <div class="input-group">
-                    <label>{isRo ? 'Strada *' : 'Utca *'}</label>
+                    <label>{isRo ? 'Strada *' : isHu ? 'Utca *' : 'Street *'}</label>
                     <input type="text" placeholder="..." required />
                 </div>
                 <div class="input-group mini">
-                    <label>{isRo ? 'Nr. *' : 'Házszám *'}</label>
+                    <label>{isRo ? 'Nr. *' : isHu ? 'Házszám *' : 'No. *'}</label>
                     <input type="text" placeholder="1" required />
                 </div>
                 <div class="input-group mini">
@@ -158,41 +161,42 @@ const isHu = lang === 'hu';
             </div>
 
             <!-- Section 3: Period -->
-            <div class="form-banner">{isRo ? 'Perioada redirecționării' : 'Felajánlás időtartama'}</div>
+            <div class="form-banner">{isRo ? 'Perioada redirecționării' : isHu ? 'Felajánlás időtartama' : 'Redirection Period'}</div>
             <div class="period-selection">
                 <label class="radio-card">
                     <input type="radio" name="period" value="1" checked />
                     <span class="radio-content">
                         <span class="radio-check"></span>
-                        <span class="radio-label">{isRo ? 'Un an' : 'Egy év'}</span>
+                        <span class="radio-label">{isRo ? 'Un an' : isHu ? 'Egy év' : 'One year'}</span>
                     </span>
                 </label>
                 <label class="radio-card">
                     <input type="radio" name="period" value="2" />
                     <span class="radio-content">
                         <span class="radio-check"></span>
-                        <span class="radio-label">{isRo ? 'Doi ani' : 'Két év'}</span>
+                        <span class="radio-label">{isRo ? 'Doi ani' : isHu ? 'Két év' : 'Two years'}</span>
                     </span>
                 </label>
             </div>
 
             <!-- Section 4: Signature -->
-            <div class="form-banner">{isRo ? 'Semnătură olograf *' : 'Saját kezű aláírás *'}</div>
+            <div class="form-banner">{isRo ? 'Semnătură olograf *' : isHu ? 'Saját kezű aláírás *' : 'Holographic Signature *'}</div>
             <div class="signature-block">
-                <p class="instr">{isRo ? '(Semnează olograf / de mână cât mai centrat pe linie pentru o încadrare bună. Folosește touchscreen-ul de pe telefon, tabletă, laptop etc.)' : '(Írd alá saját kezűleg, próbálj a vonal közepére írni. Használd a telefonod, tableted vagy laptopod érintőképernyőjét.)'}</p>
+                <p class="instr">{isRo ? '(Semnează olograf / de mână cât mai centrat pe linie pentru o încadrare bună. Folosește touchscreen-ul de pe telefon, tabletă, laptop etc.)' : isHu ? '(Írd alá saját kezűleg, próbálj a vonal közepére írni. Használd a telefonod, tableted vagy laptopod érintőképernyőjét.)' : '(Sign by hand as centered as possible on the line for good framing. Use the touchscreen on your phone, tablet, laptop, etc.)'}</p>
                 
                 <div class="consent-block" style="margin: 2rem 0;">
                     <label class="checkbox-container">
                         <input type="checkbox" required />
                         <span class="checkmark"></span>
-                        <span class="label-text">{isRo ? 'Sunt de acord ca datele de identificare (nume, prenume și cod numeric personal/număr de identificare fiscală), precum și suma direcționată să fie comunicate entității beneficiare.' : 'Hozzájárulok, hogy az azonosító adataimat (vezetéknév, utónév és személyi szám/adószám), valamint a felajánlott összeget közöljék a kedvezményezett szervezettel.'}</span>
+                        <span class="label-text">{isRo ? 'Sunt de acord ca datele de identificare (nume, prenume și cod numeric personal/număr de identificare fiscală), precum și suma direcționată să fie comunicate entității beneficiare.' : isHu ? 'Hozzájárulok, hogy az azonosító adataimat (vezetéknév, utónév és személyi szám/adószám), valamint a felajánlott összeget közöljék a kedvezményezett szervezettel.' : 'I agree that the identification data (last name, first name, and personal numeric code/tax identification number), as well as the directed amount, be communicated to the beneficiary entity.'}</span>
                     </label>
                 </div>
 
                 <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1rem;">
-                    <span style="font-weight: 700; font-size: 0.9rem;">{isRo ? 'Semnează în chenar' : 'Írj a keretbe'}</span>
+                    <span style="font-weight: 700; font-size: 0.9rem;">{isRo ? 'Semnează în chenar' : isHu ? 'Írj a keretbe' : 'Sign in the box'}</span>
                     <button type="button" id="clear-sig" class="btn-clear-sig">
-                        {isRo ? 'Semnătură nouă' : 'Új aláírás'}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+                        {isRo ? 'Semnătură nouă' : isHu ? 'Új aláírás' : 'New Signature'}
                     </button>
                 </div>
                 <div class="canvas-wrapper">
@@ -203,11 +207,114 @@ const isHu = lang === 'hu';
 
             <div class="form-footer">
                 <button type="submit" class="btn btn-primary btn-block">
-                    {isRo ? 'TRIMITE FORMULARUL' : 'ŰRLAP BEKÜLDÉSE'}
+                    {isRo ? 'TRIMITE FORMULARUL' : isHu ? 'ŰRLAP BEKÜLDÉSE' : 'SUBMIT FORM'}
                 </button>
             </div>
         </form>
       </div>
+
+      <!-- Donation Form Content (New) -->
+      <div id="donation-form-content" style="display: none;">
+        <div class="form-header">
+            <div class="org-info" style="flex-direction: column; text-align: center; gap: 1rem;">
+                <img src="/logo.png" alt="Logo" class="mini-logo" />
+                <h3 style="font-size: 1.25rem;">{isEn ? 'A Chance for the Community Association' : isHu ? 'Egy Esély a Közösségért Egyesület' : 'Asociația O Șansă Pentru Comunitate'}</h3>
+                <div class="donation-badge-header">{t('support.donation_title')}</div>
+            </div>
+        </div>
+
+        <form class="modern-form" id="donation-form">
+            <!-- Donation Type Toggle -->
+            <div class="donation-toggle-wrapper">
+                <span class={lang === 'hu' ? 'active' : ''}>{t('support.recurring')}</span>
+                <label class="switch">
+                    <input type="checkbox" id="donation-recurring-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span>{t('support.one_time')}</span>
+            </div>
+
+            <!-- Amount Selection -->
+            <div class="amount-selection-grid" id="amount-options">
+                <button type="button" class="amount-btn" data-amount="28">28 <span class="curr-label">RON</span></button>
+                <button type="button" class="amount-btn active" data-amount="56">56 <span class="curr-label">RON</span></button>
+                <button type="button" class="amount-btn" data-amount="140">140 <span class="curr-label">RON</span></button>
+                <div class="custom-amount-input">
+                    <input type="number" id="custom-amount" placeholder={t('support.custom_amount')} />
+                    <span class="curr-suffix">RON</span>
+                </div>
+            </div>
+
+            <div class="form-grid" style="margin-top: 2rem;">
+                <div class="input-group full">
+                    <label>{t('support.email_label')}</label>
+                    <input type="email" placeholder="email@example.com" required />
+                </div>
+                <div class="input-group">
+                    <label>{t('support.last_name')}</label>
+                    <input type="text" placeholder="" required />
+                </div>
+                <div class="input-group">
+                    <label>{t('support.first_name')}</label>
+                    <input type="text" placeholder="" required />
+                </div>
+            </div>
+
+            <div class="consent-block" style="margin: 2rem 0;">
+                <label class="checkbox-container">
+                    <input type="checkbox" required />
+                    <span class="checkmark"></span>
+                    <span class="label-text">{t('support.terms_1')}</span>
+                </label>
+                <label class="checkbox-container">
+                    <input type="checkbox" required />
+                    <span class="checkmark"></span>
+                    <span class="label-text">{t('support.terms_2')}</span>
+                </label>
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="btn btn-primary btn-block" style="background: #fbbf24; color: #000; font-weight: 800; border: 2px solid #000; box-shadow: 4px 4px 0px 0px #000;">
+                    {t('support.submit_donation')}
+                </button>
+            </div>
+        </form>
+      </div>
+
+      <!-- Bank Transfer Content (New) -->
+      <div id="transfer-form-content" style="display: none;">
+        <div class="form-header">
+            <div class="org-info" style="flex-direction: column; text-align: center; gap: 1rem;">
+                <img src="/logo.png" alt="Logo" class="mini-logo" />
+                <h3 style="font-size: 1.25rem;">{isEn ? 'A Chance for the Community Association' : isHu ? 'Egy Esély a Közösségért Egyesület' : 'Asociația O Șansă Pentru Comunitate'}</h3>
+                <div class="donation-badge-header">{t('support.transfer_details')}</div>
+            </div>
+        </div>
+
+        <div class="bank-info-card">
+            <div class="bank-row">
+                <span class="bank-label">{t('support.beneficiary')}:</span>
+                <span class="bank-value">Asociația "O șansă pentru comunitate"</span>
+            </div>
+            <div class="bank-row">
+                <span class="bank-label">{t('support.iban')}:</span>
+                <span class="bank-value iban" id="bank-iban">RO10 BTRL RONC RT0T 15E1 BE01</span>
+            </div>
+            <div class="bank-row">
+                <span class="bank-label">{t('support.bank_name')}:</span>
+                <span class="bank-value">Banca Transilvania</span>
+            </div>
+            <div class="bank-row">
+                <span class="bank-label">{t('support.transfer_note')}:</span>
+                <span class="bank-value highlight">{t('support.transfer_note_val')}</span>
+            </div>
+        </div>
+
+        <div class="transfer-help-text">
+            {t('support.transfer_help')}
+        </div>
+      </div>
+     </div>
     </div>
   </div>
 </section>
@@ -266,7 +373,7 @@ const isHu = lang === 'hu';
             
             if (!countyCode) {
                 const opt = document.createElement('option');
-                opt.textContent = "Előbb válassz megyét...";
+                opt.textContent = document.documentElement.lang === 'hu' ? "Előbb válassz megyét..." : document.documentElement.lang === 'ro' ? "Selectează județul întâi..." : "Select county first...";
                 citySelect.appendChild(opt);
                 return;
             }
@@ -278,7 +385,7 @@ const isHu = lang === 'hu';
             // Default placeholder
             const placeholder = document.createElement('option');
             placeholder.value = "";
-            placeholder.textContent = "Válassz települést...";
+            placeholder.textContent = document.documentElement.lang === 'hu' ? "Válassz települést..." : document.documentElement.lang === 'ro' ? "Selectează localitatea..." : "Select locality...";
             placeholder.disabled = true;
             placeholder.selected = true;
             citySelect.appendChild(placeholder);
@@ -379,22 +486,23 @@ const isHu = lang === 'hu';
             const cnpVal = cnpInput.value.trim();
             const isValid = validateCNP(cnpVal);
 
-            if (!isValid) {
+             if (!isValid) {
                 e.preventDefault();
                 cnpError.textContent = "CNP invalid. Te rugăm să verifici cifrele.";
+                if (document.documentElement.lang === 'hu') {
+                    cnpError.textContent = "Érvénytelen CNP (személyi szám). Kérjük ellenőrizd a számjegyeket.";
+                } else if (document.documentElement.lang === 'en') {
+                    cnpError.textContent = "Invalid CNP (personal numeric code). Please check the digits.";
+                }
                 cnpError.style.display = 'block';
                 cnpInput.style.borderColor = "#ef4444";
                 cnpInput.focus();
-                
-                // Hungarian message if needed (basic check)
-                if (document.documentElement.lang === 'hu') {
-                    cnpError.textContent = "Érvénytelen CNP (személyi szám). Kérjük ellenőrizd a számjegyeket.";
-                }
             } else {
                 cnpError.style.display = 'none';
                 cnpInput.style.borderColor = "";
                 // Here we would normally let the form submit or handle via AJAX
-                alert("Formularul a fost validat cu succes!");
+                const successMsg = document.documentElement.lang === 'hu' ? "Az űrlap sikeresen érvényesítve!" : document.documentElement.lang === 'ro' ? "Formularul a fost validat cu succes!" : "Form successfully validated!";
+                alert(successMsg);
             }
         });
 
@@ -404,6 +512,165 @@ const isHu = lang === 'hu';
             cnpInput.style.borderColor = "";
         });
     }
+
+    // --- Donation Switching Logic ---
+    const currencySelector = document.getElementById('currency-selector');
+    const typeSelector = document.getElementById('type-selector');
+    const taxForm = document.getElementById('tax-form-content');
+    const donationForm = document.getElementById('donation-form-content');
+    const transferForm = document.getElementById('transfer-form-content');
+    const currencyGroup = document.getElementById('currency-group');
+    
+    const updateUIState = () => {
+        const activeType = typeSelector?.querySelector('button.active')?.getAttribute('data-type');
+        const activeCurrency = currencySelector?.querySelector('button.active')?.getAttribute('data-currency');
+        
+        // Handle currency selector visibility with premium delay
+        if (currencyGroup) {
+            if (activeType === 'tax') {
+                currencyGroup.classList.remove('show');
+            } else {
+                // Small delay for the "premium" feel
+                setTimeout(() => {
+                    currencyGroup.classList.add('show');
+                }, 100);
+            }
+        }
+
+        const forms = [
+            { el: taxForm, id: 'tax' },
+            { el: donationForm, id: 'donation' },
+            { el: transferForm, id: 'transfer' }
+        ];
+
+        const targetId = activeType === 'tax' ? 'tax' : (activeType === 'transfer' ? 'transfer' : 'donation');
+
+        forms.forEach(f => {
+            if (!f.el) return;
+            if (f.id === targetId) {
+                f.el.style.display = 'block';
+                // Trigger animation in next frame
+                requestAnimationFrame(() => {
+                    f.el?.classList.add('premium-fade');
+                });
+            } else {
+                f.el.classList.remove('premium-fade');
+                // Wait for animation to finish before hiding (optional, keeping it simple for now)
+                f.el.style.display = 'none';
+            }
+        });
+
+        if (activeType === 'transfer') {
+            // Update IBAN based on currency
+            const ibanEl = document.getElementById('bank-iban');
+            if (ibanEl) {
+                if (activeCurrency === 'EUR') ibanEl.textContent = 'RO55 BTRL EUR0 RT01 2345 6789';
+                else if (activeCurrency === 'HUF') ibanEl.textContent = 'RO99 BTRL HUF0 RT01 9876 5432';
+                else ibanEl.textContent = 'RO10 BTRL RONC RT0T 15E1 BE01';
+            }
+        } else if (activeType !== 'tax') {
+            // Update currency labels in donation form
+            document.querySelectorAll('.curr-label, .curr-suffix').forEach(el => {
+                el.textContent = activeCurrency || 'RON';
+            });
+            
+            // Update amount buttons based on currency
+            const amountBtns = document.querySelectorAll('.amount-btn');
+            if (amountBtns.length >= 3) {
+                if (activeCurrency === 'EUR') {
+                    (amountBtns[0] as HTMLElement).innerHTML = `10 <span class="curr-label">EUR</span>`;
+                    (amountBtns[1] as HTMLElement).innerHTML = `20 <span class="curr-label">EUR</span>`;
+                    (amountBtns[2] as HTMLElement).innerHTML = `50 <span class="curr-label">EUR</span>`;
+                    amountBtns[0].setAttribute('data-amount', '10');
+                    amountBtns[1].setAttribute('data-amount', '20');
+                    amountBtns[2].setAttribute('data-amount', '50');
+                } else if (activeCurrency === 'HUF') {
+                    (amountBtns[0] as HTMLElement).innerHTML = `5000 <span class="curr-label">HUF</span>`;
+                    (amountBtns[1] as HTMLElement).innerHTML = `10000 <span class="curr-label">HUF</span>`;
+                    (amountBtns[2] as HTMLElement).innerHTML = `25000 <span class="curr-label">HUF</span>`;
+                    amountBtns[0].setAttribute('data-amount', '5000');
+                    amountBtns[1].setAttribute('data-amount', '10000');
+                    amountBtns[2].setAttribute('data-amount', '25000');
+                } else {
+                    (amountBtns[0] as HTMLElement).innerHTML = `28 <span class="curr-label">RON</span>`;
+                    (amountBtns[1] as HTMLElement).innerHTML = `56 <span class="curr-label">RON</span>`;
+                    (amountBtns[2] as HTMLElement).innerHTML = `140 <span class="curr-label">RON</span>`;
+                    amountBtns[0].setAttribute('data-amount', '28');
+                    amountBtns[1].setAttribute('data-amount', '56');
+                    amountBtns[2].setAttribute('data-amount', '140');
+                }
+            }
+        }
+    };
+
+    // Initialize state
+    updateUIState();
+
+    currencySelector?.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest('button');
+        if (!btn) return;
+        currencySelector.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updateUIState();
+    });
+
+    typeSelector?.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest('button');
+        if (!btn) return;
+        typeSelector.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updateUIState();
+    });
+
+    // Handle recurring toggle label highlighting
+    const recurringToggle = document.getElementById('donation-recurring-toggle') as HTMLInputElement;
+    recurringToggle?.addEventListener('change', () => {
+        const labels = document.querySelectorAll('.donation-toggle-wrapper span');
+        if (labels.length >= 2) {
+            if (recurringToggle.checked) {
+                labels[0].classList.remove('active');
+                labels[1].classList.add('active');
+            } else {
+                labels[0].classList.add('active');
+                labels[1].classList.remove('active');
+            }
+        }
+    });
+
+    // Handle donation amount selection
+    const amountOptions = document.getElementById('amount-options');
+    amountOptions?.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest('.amount-btn');
+        if (!btn) return;
+        amountOptions.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const customInp = document.getElementById('custom-amount') as HTMLInputElement;
+        if (customInp) customInp.value = '';
+    });
+
+    document.getElementById('custom-amount')?.addEventListener('input', () => {
+        amountOptions?.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Donation form submission
+    document.getElementById('donation-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const activeCurrency = currencySelector?.querySelector('button.active')?.getAttribute('data-currency');
+        const activeBtn = amountOptions?.querySelector('.amount-btn.active');
+        const customVal = (document.getElementById('custom-amount') as HTMLInputElement).value;
+        const amount = activeBtn ? activeBtn.getAttribute('data-amount') : customVal;
+        
+        if (!amount) {
+            const msg = document.documentElement.lang === 'hu' ? 'Kérjük válasszon vagy adjon meg egy összeget.' : 'Vă rugăm să selectați sau să introduceți o sumă.';
+            alert(msg);
+            return;
+        }
+
+        // Mock redirection to Barion style payment
+        const waitMsg = document.documentElement.lang === 'hu' ? 'Redirektálás a biztonságos fizetési oldalra (Barion)...' : 'Redirecționare către plată securizată (Barion)...';
+        alert(`${waitMsg}\nÖsszeg: ${amount} ${activeCurrency}`);
+        window.location.href = "https://www.barion.com";
+    });
 </script>
 
 <style>
@@ -571,86 +838,33 @@ const isHu = lang === 'hu';
 
   .form-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
     margin-bottom: 2rem;
   }
-  .input-group.mini { grid-column: span 1; }
   
-  @media (min-width: 641px) {
+  @media (min-width: 768px) {
     .form-grid { grid-template-columns: repeat(12, 1fr); }
     .input-group { grid-column: span 6; }
-    .input-group.mini { grid-column: span 2; }
+    .input-group.full { grid-column: span 12; }
+    /* Give address details better spacing */
+    .input-group.mini { grid-column: span 2.4; } /* 5 fields = 12 units */
   }
-
-  /* Period Selection */
-  .period-selection {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 3rem;
+  
+  /* Prevent label wrapping for these small fields */
+  .input-group.mini label {
+    white-space: nowrap;
+    font-size: 0.7rem;
   }
-  .radio-card {
-    flex: 1;
-    cursor: pointer;
-  }
-  .radio-card input { display: none; }
-  .radio-content {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.25rem;
-    background: #f8fafc;
-    border: 2px solid #e2e8f0;
-    border-radius: 16px;
-    transition: all 0.2s;
-  }
-  .radio-check {
-    width: 24px;
-    height: 24px;
-    border: 2px solid #cbd5e1;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-  }
-  .radio-card input:checked + .radio-content {
-    border-color: var(--primary);
-    background: white;
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1);
-  }
-  .radio-card input:checked + .radio-content .radio-check {
-    background: var(--primary);
-    border-color: var(--primary);
-  }
-  .radio-card input:checked + .radio-content .radio-check::after {
-    content: '✓';
-    color: white;
-    font-weight: 900;
-    font-size: 14px;
-  }
-
-  .btn-clear-sig {
-    background: #f87171;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
-  .btn-clear-sig:hover { opacity: 0.9; }
 
   .input-group label {
     display: block;
     font-size: 0.8rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     color: #475569;
     text-transform: uppercase;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.05em;
   }
   .input-group input, .input-group select {
     width: 100%;
@@ -699,7 +913,275 @@ const isHu = lang === 'hu';
     z-index: 1;
   }
 
+  .btn-clear-sig {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 10px;
+    background: white;
+    color: var(--text-muted);
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-clear-sig:hover {
+    background: var(--bg-soft);
+    border-color: var(--primary-light);
+    color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-clear-sig:active {
+    transform: translateY(0);
+  }
+
   .btn-block { width: 100%; padding: 1.25rem; font-size: 1.1rem; }
+
+  /* Donation Form Specific Styles */
+  .donation-toggle-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .donation-toggle-wrapper .active {
+    color: var(--primary);
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #cbd5e1;
+    transition: .4s;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px; width: 26px;
+    left: 4px; bottom: 4px;
+    background-color: white;
+    transition: .4s;
+  }
+  input:checked + .slider { background-color: #fbbf24; }
+  input:checked + .slider:before { transform: translateX(26px); }
+  .slider.round { border-radius: 34px; }
+  .slider.round:before { border-radius: 50%; }
+
+  .amount-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  @media (min-width: 640px) {
+    .amount-selection-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  
+  .amount-btn {
+    padding: 1rem;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .amount-btn:hover { border-color: #fbbf24; transform: translateY(-2px); }
+  .amount-btn.active { background: #fbbf24; border-color: #fbbf24; box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4); }
+  .curr-label { font-size: 0.8rem; font-weight: 600; opacity: 0.7; }
+  
+  .custom-amount-input {
+    position: relative;
+    grid-column: span 1;
+  }
+  @media (max-width: 639px) { .custom-amount-input { grid-column: span 2; } }
+  .custom-amount-input input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .curr-suffix {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
+  }
+
+  /* Bank Transfer Styles */
+  .bank-info-card {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin: 2rem 0;
+    border: 1px solid #e2e8f0;
+  }
+  .bank-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .bank-row:last-child { margin-bottom: 0; }
+  .bank-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.05em;
+  }
+  .bank-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    word-break: break-all;
+  }
+  .bank-value.iban {
+    font-family: inherit;
+    letter-spacing: 0.02em;
+    color: var(--primary);
+  }
+  .bank-value.highlight {
+    color: #c2410c; /* High contrast for note */
+  }
+  
+  .transfer-help-text {
+    font-weight: 700;
+    line-height: 1.6;
+    color: #0f172a;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+
+  .donation-badge-header {
+    background: #000;
+    color: #fff;
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    font-weight: 800;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 1rem;
+  }
+
+  /* Premium Animations */
+  .animate-expand {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .animate-expand.show {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 2rem;
+  }
+
+  #tax-form-content, #donation-form-content, #transfer-form-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .premium-fade {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Checkbox Styles */
+  .consent-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 2.5rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    user-select: none;
+    min-height: 24px;
+  }
+
+  /* Hide native */
+  .checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Custom box */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: #fff;
+    border: 2px solid #cbd5e1;
+    border-radius: 7px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .checkbox-container:hover input ~ .checkmark {
+    border-color: #fbbf24;
+    background-color: #fffbeb;
+  }
+
+  .checkbox-container input:checked ~ .checkmark {
+    background-color: #fbbf24;
+    border-color: #fbbf24;
+    box-shadow: 0 4px 10px rgba(251, 191, 36, 0.2);
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 8px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+
+  .checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+  }
 
   @media (max-width: 1024px) {
     .pitch-container { grid-template-columns: 1fr; text-align: center; }
