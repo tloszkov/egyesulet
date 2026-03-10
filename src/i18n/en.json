@@ -16,16 +16,52 @@
     },
     "about": {
         "title": "Who are we?",
-        "description": "The 'O Șansă Pentru Comunitate' (A Chance for the Community) Association was founded in August 2021 in Cristuru Secuiesc, aiming to be a catalyst for local community development. We firmly believe that the strength of a community lies in its own resources.",
+        "subtitle": "A Chance for the Community",
+        "description": "A CHANCE FOR THE COMMUNITY ASSOCIATION (Asociația O Șansă Pentru Comunitate) is a non-governmental, non-profit organization founded in August 2021 in Cristuru Secuiesc, with the mission to be a catalyst for local community development. We firmly believe that the strength of a community lies in its own resources and that only through collaboration and active participation can we build a better future.",
+
+        "founding_title": "Founding Members",
+        "founder_1": "Kovács Zsolt - President",
+        "founder_2": "Kerestély Attila - Vice President",
+        "founder_3": "Kovács Ioan - Secretary",
+        "founding_date": "August 27, 2021",
+
         "history_title": "Our History",
-        "history_text": "Our association was established on August 27, 2021, by its founding members: Kovács Zsolt, Kerestély Attila, and Kovács János. Since then, we have been dedicated to creating new opportunities for Cristuru Secuiesc and its surrounding regions.",
+        "history_text": "Our association was established on August 27, 2021, by its founding members: Kovács Zsolt, Kerestély Attila, and Kovács Ioan, with the goal to become a driving force for local civil society development. Our headquarters is located at Str. Morii nr. 34, Cristuru Secuiesc, Harghita. Since our establishment, we have been dedicated to creating new opportunities for Cristuru Secuiesc and its surrounding regions.",
+
         "mission_title": "Our Mission and Goals",
-        "mission_text": "We pursue the sustainable development of the local community and support civil society efforts to stimulate community resources. We support progress from a socio-economic and cultural point of view, encouraging citizen participation in local development.",
+        "mission_text": "We pursue the sustainable development of the local community and support civil society efforts to stimulate community resources. We support progress from a socio-economic and cultural point of view, encouraging citizen participation in local development. Our goals focus on social support, economic development, cultural promotion, education, and environmental protection.",
+
+        "vision_title": "Our Vision",
+        "vision_text": "A vibrant, inclusive, and sustainable community where every citizen has the opportunity to reach their full potential and contribute to collective development.",
+
+        "values_title": "Our Values",
+        "values_intro": "Our actions are guided by principles that shape every decision and activity:",
+        "value_1_title": "Transparency",
+        "value_1_text": "100% transparency in resource management and communication with the community",
+        "value_2_title": "Inclusivity",
+        "value_2_text": "No one is left behind - we work for everyone, regardless of background",
+        "value_3_title": "Accountability",
+        "value_3_text": "Responsible for our actions and their impact on the community",
+
         "pillars_title": "Key Areas of Activity",
         "pillar_1": "Social Support",
+        "pillar_1_desc": "Assistance for vulnerable groups and people in difficult situations",
         "pillar_2": "Economic Development",
+        "pillar_2_desc": "Entrepreneurial programs and business consulting",
         "pillar_3": "Cultural Promotion",
-        "pillar_4": "Sustainable Local Development"
+        "pillar_3_desc": "Cultural events and protection of local heritage",
+        "pillar_4": "Education & Sustainable Development",
+        "pillar_4_desc": "Educational programs and environmental protection initiatives",
+
+        "activities_title": "Main Activities",
+        "activity_1": "Organization of training courses and professional workshops",
+        "activity_2": "Career guidance and job search counseling programs",
+        "activity_3": "Cultural and educational activities for youth and children",
+        "activity_4": "Participation in European projects and development programs",
+        "activity_5": "Partnerships with public administration and other civil organizations",
+        "activity_6": "Charitable assistance for people in need",
+        "activity_7": "Environmental protection and ecological education initiatives",
+        "activity_8": "Operation of an animal shelter"
     },
     "contact": {
         "email": "office@ospc.ro",

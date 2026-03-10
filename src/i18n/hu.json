@@ -16,16 +16,52 @@
   },
   "about": {
     "title": "Kik vagyunk mi?",
-    "description": "Az „Egy Esély a Közösségért Egyesület” (Asociația O Șansă Pentru Comunitate) 2021 augusztusában alakult Székelykeresztúron azzal a céllal, hogy motorja legyen a helyi közösségi élet fejlődésének. Hiszünk abban, hogy a közösség ereje a saját erőforrásaiban rejlik.",
+    "subtitle": "Egy Esély a Közösségért",
+    "description": "AZ EGY ESÉLY A KÖZÖSSÉGÉRT EGYESÜLET (Asociația O Șansă Pentru Comunitate) egy civil szervezet, amely 2021 augusztusában alakult Székelykeresztúron azzal a céllal, hogy motorja legyen a helyi közösségi élet fejlődésének. Hiszünk abban, hogy a közösség ereje a saját erőforrásaiban rejlik, és csak együttműködéssel, aktív részvétellel építhetünk jobb jövőt.",
+
+    "founding_title": "Alapító Tagok",
+    "founder_1": "Kovács Zsolt - Elnök",
+    "founder_2": "Kerestély Attila - Alelnök",
+    "founder_3": "Kovács Ioan - Titkár",
+    "founding_date": "2021. augusztus 27.",
+
     "history_title": "Történetünk",
-    "history_text": "Egyesületünket 2021. augusztus 27-én hívtuk életre alapító tagjaink (Kovács Zsolt, Kerestély Attila és Kovács János) kezdeményezésére. Azóta elkötelezetten dolgozunk azon, hogy Székelykeresztúr és környéke számára új lehetőségeket teremtsünk.",
+    "history_text": "Egyesületünket 2021. augusztus 27-én hívtuk életre alapító tagjaink (Kovács Zsolt, Kerestély Attila és Kovács Ioan) kezdeményezésére, azzal a céllal, hogy a helyi civil társadalom fejlesztésének motorja legyünk. Székhelyünk: Székelykeresztúr, Morii utca 34. Azóta elkötelezetten dolgozunk azon, hogy Székelykeresztúr és környéke számára új lehetőségeket teremtsünk.",
+
     "mission_title": "Küldetésünk és céljaink",
-    "mission_text": "Fő célunk a helyi közösség fenntartható fejlődése és a civil szféra megerősítése. Olyan programokat támogatunk és valósítunk meg, amelyek elősegítik a társadalmi, gazdasági és kulturális fejlődést, ösztönözve a közösség tagjait saját erőforrásaik mozgósítására.",
+    "mission_text": "Fő célunk a helyi közösség fenntartható fejlődése és a civil szféra megerősítése. Olyan programokat támogatunk és valósítunk meg, amelyek elősegítik a társadalmi, gazdasági és kulturális fejlődést, ösztönözve a közösség tagjait saját erőforrásaik mozgósítására. Céljaink szociális támogatásra, gazdasági fejlődésre, kulturális értékek megőrzésére és a környezetvédelemre összpontosulnak.",
+
+    "vision_title": "Vízióink",
+    "vision_text": "Egy vibráló, inkluzív és fenntartható közösség, ahol minden közösségi tag lehetőséget kap potenciáljának kibontakoztatására és hozzájárul a közös fejlődéshez.",
+
+    "values_title": "Értékeink",
+    "values_intro": "Cselekedeteink az alábbi alapelvek vezetik:",
+    "value_1_title": "Átláthatóság",
+    "value_1_text": "100% átláthatóság az erőforrások kezelésében és a közösséggel való kommunikációban",
+    "value_2_title": "Inkluzivitás",
+    "value_2_text": "Senki sem marad hátra - mindenkiért dolgozunk, függetlenül az eredettől",
+    "value_3_title": "Felelősség",
+    "value_3_text": "Felelősek tettünkért és a közösségre gyakorolt hatásunkért",
+
     "pillars_title": "Főbb tevékenységi területeink",
     "pillar_1": "Szociális támogatás",
-    "pillar_2": "Gazdasági fejlődés ösztönzése",
-    "pillar_3": "Kulturális értékek megőrzése és népszerűsítése",
-    "pillar_4": "Fenntartható helyi fejlesztések"
+    "pillar_1_desc": "Segítség a rászoruló csoportoknak és nehéz helyzetben lévő személyeknek",
+    "pillar_2": "Gazdasági fejlődés",
+    "pillar_2_desc": "Vállalkozási programok és üzleti tanácsadás",
+    "pillar_3": "Kulturális értékek megőrzése",
+    "pillar_3_desc": "Kulturális események és a helyi örökség védelme",
+    "pillar_4": "Oktatás és fenntartható fejlődés",
+    "pillar_4_desc": "Képzési programok és környezetvédelmi kezdeményezések",
+
+    "activities_title": "Fő tevékenységeink",
+    "activity_1": "Képzési kurzusok és szakmai műhelyek szervezése",
+    "activity_2": "Pályaorientációs és munkahelykeresési tanácsadás",
+    "activity_3": "Kulturális és oktatási programok fiataloknak és gyerekeknek",
+    "activity_4": "Részvétel európai projektekben és fejlesztési programokban",
+    "activity_5": "Partnerségek az önkormányzattal és más civil szervezetekkel",
+    "activity_6": "Karitatív tevékenység rászorulók megsegítésére",
+    "activity_7": "Környezetvédelmi és ökológiai oktatási kezdeményezések",
+    "activity_8": "Állatmenhely működtetése"
   },
   "contact": {
     "email": "office@ospc.ro",

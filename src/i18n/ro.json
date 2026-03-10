@@ -16,16 +16,52 @@
     },
     "about": {
         "title": "Cine suntem?",
-        "description": "Asociația „O Șansă Pentru Comunitate” a fost înființată în august 2021 la Cristuru Secuiesc, cu scopul de a deveni un motor al dezvoltării comunitare locale. Credem cu tărie că forța unei comunități stă în propriile sale resurse.",
+        "subtitle": "O Șansă Pentru Comunitate",
+        "description": "ASOCIAȚIA O ȘANSĂ PENTRU COMUNITATE este o organizație neguvernamentală, non-profit, înființată în august 2021 la Cristuru Secuiesc, cu scopul de a deveni un motor al dezvoltării comunitare locale. Credem cu tărie că forța unei comunități stă în propriile sale resurse și că doar prin colaborare și implicare activă putem construi un viitor mai bun.",
+
+        "founding_title": "Membrii Fondatori",
+        "founder_1": "Kovács Zsolt - Președinte",
+        "founder_2": "Kerestély Attila - Vicepreședinte",
+        "founder_3": "Kovács Ioan - Secretar",
+        "founding_date": "27 August 2021",
+
         "history_title": "Istoricul nostru",
-        "history_text": "Am pus bazele asociației la data de 27.08.2021 prin inițiativa membrilor fondatori: Kovács Zsolt, Kerestély Attila și Kovács János. De atunci, ne-am angajat să creăm noi oportunități pentru orașul Cristuru Secuiesc și zonele limitrofe.",
+        "history_text": "Asociația a fost constituită la data de 27.08.2021 prin voinţa liberă a membrilor fondatori, cu scopul de a promova dezvoltarea durabilă a comunității locale din Cristuru Secuiesc și zonele limitrofe. Sediul social este situat la Str. Morii nr. 34, Cristuru Secuiesc, Harghita. Din moment întemeierii, ne-am angajat să creăm noi oportunități și să sprijiniem inițiativele civile locale.",
+
         "mission_title": "Misiunea și obiectivele noastre",
-        "mission_text": "Urmărim dezvoltarea durabilă a comunității locale și sprijinirea eforturilor societății civile pentru stimularea resurselor proprii. Susținem progresul din punct de vedere socio-economic și cultural, încurajând participarea activă a cetățenilor în dezvoltarea locală.",
+        "mission_text": "Urmărim dezvoltarea durabilă a comunității locale și sprijinirea eforturilor societății civile pentru stimularea resurselor proprii. Susținem progresul din punct de vedere socio-economic și cultural, încurajând participarea activă a cetățenilor în dezvoltarea locală. Obiectivele noastre se concentrează pe: sprijin social, dezvoltare economică, promovare culturală, educație și protecția mediului.",
+
+        "vision_title": "Viziunea noastră",
+        "vision_text": "O comunitate vibrantă, incluzivă și durabilă unde orice cetățean are oportunitatea să-și realizeze potențialul și să contribuie la dezvoltarea colectivă.",
+
+        "values_title": "Valorile noastre",
+        "values_intro": "Acționez după principii care ghidează fiecare decizie și activitate:",
+        "value_1_title": "Transparență",
+        "value_1_text": "100% transparență în gestionarea resurselor și în comunicarea cu comunitatea",
+        "value_2_title": "Incluziune",
+        "value_2_text": "Niciun om nu este lăsat în urmă - suntem pentru toți, indiferent de origine",
+        "value_3_title": "Responsabilitate",
+        "value_3_text": "Răspunderi pentru faptele noastre și pentru impactul comunității",
+
         "pillars_title": "Domenii principale de activitate",
         "pillar_1": "Susținere socială",
-        "pillar_2": "Stimularea dezvoltării economice",
+        "pillar_1_desc": "Asistență pentru grupurile vulnerabile și persoane în dificultate",
+        "pillar_2": "Dezvoltare economică",
+        "pillar_2_desc": "Programe antreprenoriale și consiliere în afaceri",
         "pillar_3": "Promovarea valorilor culturale",
-        "pillar_4": "Dezvoltare durabilă locală"
+        "pillar_3_desc": "Evenimente culturale și protecția patrimoniului local",
+        "pillar_4": "Educație și dezvoltare durabilă",
+        "pillar_4_desc": "Programe educaționale și inițiative de protecție a mediului",
+
+        "activities_title": "Activități principale",
+        "activity_1": "Organizarea de cursuri de formare și workshop-uri profesionale",
+        "activity_2": "Programe de sprijin și consiliere ocupațională",
+        "activity_3": "Activități culturale și educaționale pentru tineri și copii",
+        "activity_4": "Participare în proiecte europene și programe de dezvoltare",
+        "activity_5": "Parteneriate cu administrația publică și alte organizații civile",
+        "activity_6": "Sprijin caritabil pentru persoanele în nevoie",
+        "activity_7": "Inițiative de protecție a mediului și educație ecologică",
+        "activity_8": "Gestionarea unui adăpost pentru animale"
     },
     "contact": {
         "email": "office@ospc.ro",
