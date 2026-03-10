@@ -4,24 +4,19 @@ Ez a dokumentum tartalmazza az összes olyan lépést, amely egy profi, bizalom�
 
 ---
 
-## 🟢 1. Technikai Alapok (Elkészült)
-- [x] **Fejlesztői környezet**: Vite + Vanilla JS + CSS alapok.
-- [x] **Dizájn rendszer**: Színpaletta (logó alapján), Inter betűtípus, üveghatás (glassmorphism).
-- [x] **Reszponzivitás**: Mobilbarát menü és elrendezés.
-- [x] **Deployment**: GitHub repository és Cloudflare Pages összekötése.
-- [x] **Verziókövetés**: Működő Git folyamat.
-
----
-
-- [x] **Többoldalas szerkezet kialakítása**: Az egyoldalas (one-page) elrendezés helyett külön aloldalak létrehozása:
-    - [x] Kezdőlap (Home)
-    - [x] Rólunk (About)
-    - [x] Projektek (Projects)
-    - [x] Hírek (News)
-    - [x] Kapcsolat (Contact)
-    - [x] Támogatás (Support) - **ELKÉSZÜLT!**
-- [ ] **Facebook API Integráció**:
+## 🔴 1. AZONNALI PRIORITÁS (Facebook Integráció)
+- [ ] **Facebook Feed javítása**: A Behold.so csak Instagramot tud. Át kell állni **Curator.io**-ra vagy **Juicer.io**-ra a valódi Facebook posztok megjelenítéséhez.
 - [ ] **1% / 2% Adófelajánlás**: Figyelemfelkeltő doboz, letölthető nyilatkozattal (vagy online kitöltési segédlettel).
+
+## 🟢 2. Technikai Alapok (Elkészült)
+- [x] **Fejlesztői környezet**: Astro keretrendszer migrálás.
+- [x] **Dizájn rendszer**: Színpaletta, Üveghatás, Prémium mobil menü.
+- [x] **Reszponzivitás**: Teljesen optimalizált mobil nézet (News kártyák, Logo fixálva).
+- [x] **Deployment**: GitHub repository és Cloudflare Pages összekötése.
+
+## 🔵 3. Tartalom és Funkciók
+- [x] **Többoldalas szerkezet kialakítása**: Kezdőlap, Rólunk, Projektek, Hírek, Kapcsolat.
+- [x] **Támogatás (Support)**: Form 230 generálás dinamikus megyeválasztóval és CNP validációval.
 - [ ] **Támogatási adatok**: Bankszámlaszám, SWIFT kód, adományozási célok.
 - [ ] **Éves beszámolók**: Egy „Letöltések” vagy „Átláthatóság” fül a közhasznúsági jelentéseknek (PDF-ek).
 - [ ] **Partnerek**: Logó-fal a támogatóknak, önkormányzatoknak, cégeknek.
