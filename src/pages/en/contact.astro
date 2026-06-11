@@ -2,97 +2,15 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { useTranslations } from '../../i18n/utils';
+import ContactSection from '../../components/ContactSection.astro';
 
 const lang = 'en';
-const t = useTranslations(lang);
 ---
 
-<Layout title="Contact - A Chance for the Community" lang={lang}>
-	<Header lang={lang} />
-	<main style="padding-top: 120px; padding-bottom: 6rem;">
-        <div class="container">
-            <div class="section-title">
-                <h2>{t('nav.contact')}</h2>
-                <p>We are here to answer your questions.</p>
-            </div>
-            
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Contact Information</h3>
-                    <p style="margin-top: 1.5rem;"><strong>Address:</strong> {t('contact.address')}</p>
-                    <p style="margin-top: 1rem;"><strong>Email:</strong> {t('contact.email')}</p>
-                    <p style="margin-top: 1rem;"><strong>{t('contact.president')}:</strong> {t('contact.president_email')}</p>
-                </div>
-                
-                <div class="card">
-                    <h3>{t('contact.form_title')}</h3>
-                    <div id="form-status" style="display: none; padding: 1rem; border-radius: 12px; margin-bottom: 1rem; font-weight: 600; text-align: center;"></div>
-                    <form id="contact-form" action="https://formspree.io/f/mzdagnde" method="POST" class="premium-form" style="margin-top: 1.5rem;">
-                         <div class="input-group" style="margin-bottom: 1.5rem;">
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1e293b;">{t('contact.name')}</label>
-                            <input type="text" name="name" placeholder="..." required style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 12px; font-size: 1rem;" />
-                        </div>
-                        <div class="input-group" style="margin-bottom: 1.5rem;">
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1e293b;">{t('contact.email_label')}</label>
-                            <input type="email" name="email" placeholder="email@example.com" required style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 12px; font-size: 1rem;" />
-                        </div>
-                        <div class="input-group" style="margin-bottom: 1.5rem;">
-                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1e293b;">{t('contact.message')}</label>
-                            <textarea name="message" rows="4" placeholder="..." required style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #e2e8f0; border-radius: 12px; font-size: 1rem; resize: vertical;"></textarea>
-                        </div>
-                        <button type="submit" id="submit-btn" class="btn btn-primary btn-block" style="background: #fbbf24; color: #000; font-weight: 800; border: 2px solid #000; box-shadow: 4px 4px 0px 0px #000; width: 100%; padding: 1rem; transition: all 0.2s;">
-                            <span class="btn-text">{t('contact.send')}</span>
-                        </button>
-                    </form>
-                </div>
-
-                <script>
-                    const form = document.getElementById('contact-form') as HTMLFormElement;
-                    const status = document.getElementById('form-status');
-                    const btn = document.getElementById('submit-btn');
-                    const btnText = btn?.querySelector('.btn-text');
-
-                    form?.addEventListener('submit', async (e) => {
-                        e.preventDefault();
-                        if (!form || !status || !btn || !btnText) return;
-
-                        const data = new FormData(form);
-                        btn.style.opacity = '0.7';
-                        btn.style.pointerEvents = 'none';
-                        btnText.textContent = "...";
-
-                        try {
-                            const response = await fetch(form.action, {
-                                method: 'POST',
-                                body: data,
-                                headers: { 'Accept': 'application/json' }
-                            });
-
-                            if (response.ok) {
-                                status.style.display = 'block';
-                                status.style.background = '#dcfce7';
-                                status.style.color = '#166534';
-                                status.textContent = "Thank you! Your message has been sent successfully.";
-                                form.reset();
-                                form.style.display = 'none';
-                            } else {
-                                throw new Error();
-                            }
-                        } catch (error) {
-                            status.style.display = 'block';
-                            status.style.background = '#fee2e2';
-                            status.style.color = '#991b1b';
-                            status.textContent = "Oops! There was a problem submitting your form. Please try again later.";
-                        } finally {
-                            btn.style.opacity = '1';
-                            btn.style.pointerEvents = 'auto';
-                            btnText.textContent = "Send Message";
-                        }
-                    });
-                </script>
-            </div>
-        </div>
-    </main>
-	<Footer lang={lang} />
+<Layout title="Contact - A Chance for the Community" lang={lang} description="Get in touch with A Chance for the Community Association — address, email, contact form.">
+  <Header lang={lang} />
+  <main style="padding-top: 5rem;">
+    <ContactSection lang={lang} />
+  </main>
+  <Footer lang={lang} />
 </Layout>
