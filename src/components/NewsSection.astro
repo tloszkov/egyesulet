@@ -11,16 +11,56 @@ const t = useTranslations(lang as any);
       <p>{lang === 'hu' ? 'Friss hírek közvetlenül a Facebook oldalunkról' : lang === 'ro' ? 'Ultimele noutăți direct de pe pagina noastră de Facebook' : 'Latest news directly from our Facebook page'}</p>
     </div>
 
-    <!-- Juicer.io Facebook Feed -->
-    <div id="juicer-feed-asocia-ia-ospc-egyesulet" style="margin-top: 3rem;"></div>
+    <div class="fb-feed-wrapper">
+      <div id="fb-root"></div>
+      <div class="fb-page"
+        data-href="https://www.facebook.com/ospcom"
+        data-tabs="timeline"
+        data-width="500"
+        data-height="700"
+        data-small-header="false"
+        data-adapt-container-width="true"
+        data-hide-cover="false"
+        data-show-facepile="true">
+      </div>
+    </div>
 
     <div style="text-align: center; margin-top: 3rem;">
-      <a href="https://www.facebook.com/ospcom" target="_blank" class="btn btn-outline" style="border: 2px solid #000; padding: 1rem 2rem; font-weight: 700; border-radius: 12px; text-decoration: none; color: #000; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s;">
+      <a href="https://www.facebook.com/ospcom" target="_blank" rel="noopener noreferrer" class="btn-fb">
         {lang === 'hu' ? 'Összes hír a Facebookon' : lang === 'ro' ? 'Toate știrile pe Facebook' : 'All news on Facebook'}
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
       </a>
     </div>
   </div>
 </section>
 
-<script type="text/javascript" src="https://www.juicer.io/embed/asocia-ia-ospc-egyesulet/embed-code.js" async defer></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/hu_HU/sdk.js#xfbml=1&version=v19.0"></script>
+
+<style>
+  .fb-feed-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    min-height: 400px;
+  }
+
+  .btn-fb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2rem;
+    background: #1877f2;
+    color: white;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(24, 119, 242, 0.35);
+  }
+  .btn-fb:hover {
+    background: #166fe5;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(24, 119, 242, 0.45);
+  }
+</style>
