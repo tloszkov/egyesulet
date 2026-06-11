@@ -8,6 +8,38 @@ const links = {
     hu: { about: '/hu/rolunk', projects: '/hu/projektek', news: '/hu/hirek', contact: '/hu/kapcsolat', support: '/hu/tamogatas' },
     en: { about: '/en/about', projects: '/en/projects', news: '/en/news', contact: '/en/contact', support: '/en/support' }
 }[lang as 'ro' | 'hu' | 'en'];
+
+// Page equivalents across languages — used for language switcher
+const pageMap: Record<string, Record<string, string>> = {
+    'home':         { ro: '/',            hu: '/hu/',             en: '/en/' },
+    'about':        { ro: '/despre-noi',  hu: '/hu/rolunk',       en: '/en/about' },
+    'projects':     { ro: '/proiecte',    hu: '/hu/projektek',    en: '/en/projects' },
+    'news':         { ro: '/stiri',       hu: '/hu/hirek',        en: '/en/news' },
+    'contact':      { ro: '/contact',     hu: '/hu/kapcsolat',    en: '/en/contact' },
+    'support':      { ro: '/sustine-ne',  hu: '/hu/tamogatas',    en: '/en/support' },
+    'privacy':      { ro: '/privacy',     hu: '/hu/adatvedelem',  en: '/en/privacy' },
+    'transparency': { ro: '/transparenta',hu: '/hu/atlathatosag', en: '/en/transparency' },
+};
+
+// Detect current page key from pathname
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const slugMap: Record<string, string> = {
+    '': 'home', '/': 'home',
+    '/despre-noi': 'about', '/hu/rolunk': 'about', '/en/about': 'about',
+    '/proiecte': 'projects', '/hu/projektek': 'projects', '/en/projects': 'projects',
+    '/stiri': 'news', '/hu/hirek': 'news', '/en/news': 'news',
+    '/contact': 'contact', '/hu/kapcsolat': 'contact', '/en/contact': 'contact',
+    '/sustine-ne': 'support', '/hu/tamogatas': 'support', '/en/support': 'support',
+    '/privacy': 'privacy', '/hu/adatvedelem': 'privacy', '/en/privacy': 'privacy',
+    '/transparenta': 'transparency', '/hu/atlathatosag': 'transparency', '/en/transparency': 'transparency',
+    '/hu': 'home', '/en': 'home',
+};
+const pageKey = slugMap[pathname] ?? 'home';
+const langLinks = {
+    ro: pageMap[pageKey]?.ro ?? '/',
+    hu: pageMap[pageKey]?.hu ?? '/hu/',
+    en: pageMap[pageKey]?.en ?? '/en/',
+};
 ---
 
 <header id="main-header">
@@ -30,9 +62,9 @@ const links = {
 
       <div class="header-nav-actions">
         <div class="header-langs">
-          <a href="/" class={lang === 'ro' ? 'active' : ''}>RO</a>
-          <a href="/hu/" class={lang === 'hu' ? 'active' : ''}>HU</a>
-          <a href="/en/" class={lang === 'en' ? 'active' : ''}>EN</a>
+          <a href={langLinks.ro} class={lang === 'ro' ? 'active' : ''}>RO</a>
+          <a href={langLinks.hu} class={lang === 'hu' ? 'active' : ''}>HU</a>
+          <a href={langLinks.en} class={lang === 'en' ? 'active' : ''}>EN</a>
         </div>
         <a href={links.support} class="btn btn-primary header-support-btn">
           {t('hero.cta_support')}
@@ -54,9 +86,9 @@ const links = {
       <a href={links.contact}>{t('nav.contact')}</a>
       <div class="header-mobile-divider"></div>
       <div class="header-mobile-langs">
-        <a href="/" class={lang === 'ro' ? 'active' : ''}>RO</a>
-        <a href="/hu/" class={lang === 'hu' ? 'active' : ''}>HU</a>
-        <a href="/en/" class={lang === 'en' ? 'active' : ''}>EN</a>
+        <a href={langLinks.ro} class={lang === 'ro' ? 'active' : ''}>RO</a>
+        <a href={langLinks.hu} class={lang === 'hu' ? 'active' : ''}>HU</a>
+        <a href={langLinks.en} class={lang === 'en' ? 'active' : ''}>EN</a>
       </div>
       <a href={links.support} class="btn btn-primary btn-full">{t('hero.cta_support')}</a>
     </nav>
