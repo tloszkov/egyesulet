@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const lang = 'ro';
+---
+
+<Layout title="Politica de Confidențialitate - OSPC" lang={lang} description="Politica de confidențialitate și prelucrarea datelor cu caracter personal - Asociația O Șansă Pentru Comunitate">
+  <Header lang={lang} />
+  <main style="padding-top: 8rem; padding-bottom: 6rem;">
+    <div class="container" style="max-width: 800px;">
+      <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Politica de Confidențialitate</h1>
+      <p style="color: #64748b; margin-bottom: 3rem;">Ultima actualizare: Iunie 2025</p>
+
+      <div class="privacy-content">
+        <section>
+          <h2>1. Cine suntem</h2>
+          <p>Asociația O Șansă Pentru Comunitate (OSPC), cu sediul în Str. Morii nr. 34, Cristuru Secuiesc, județul Harghita, este responsabilă pentru prelucrarea datelor cu caracter personal colectate prin intermediul acestui site web (<strong>ospc.ro</strong>).</p>
+          <p>Contact: <a href="mailto:office@ospc.ro">office@ospc.ro</a></p>
+        </section>
+
+        <section>
+          <h2>2. Ce date colectăm</h2>
+          <p>Colectăm date cu caracter personal doar atunci când tu ni le furnizezi în mod voluntar, prin:</p>
+          <ul>
+            <li><strong>Formularul de contact</strong> — nume, adresă de email, mesaj</li>
+            <li><strong>Formularul 230 (3,5% redirecționare)</strong> — nume, prenume, CNP, adresă de domiciliu, email, semnătură olografă digitală</li>
+            <li><strong>Formularul de donație</strong> — nume, email</li>
+          </ul>
+          <p>De asemenea, site-ul poate colecta automat date tehnice (adresă IP, tip browser) prin intermediul serviciilor de analiză web (Google Analytics), dacă ești de acord cu utilizarea cookie-urilor.</p>
+        </section>
+
+        <section>
+          <h2>3. De ce prelucrăm datele</h2>
+          <ul>
+            <li><strong>Formularul 230</strong> — pentru întocmirea și transmiterea declarației de redirecționare a impozitului pe venit către ANAF, conform legislației fiscale române</li>
+            <li><strong>Formularul de contact</strong> — pentru a răspunde solicitărilor tale</li>
+            <li><strong>Donații</strong> — pentru procesarea donației și emiterea confirmării</li>
+            <li><strong>Analiză web</strong> — pentru înțelegerea traficului și îmbunătățirea site-ului (numai cu consimțământul tău)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Temeiul legal</h2>
+          <p>Prelucrăm datele în baza:</p>
+          <ul>
+            <li><strong>Consimțământului</strong> (Art. 6 alin. 1 lit. a GDPR) — pentru newsletter, cookie-uri analitice</li>
+            <li><strong>Executarea unui contract / obligație legală</strong> (Art. 6 alin. 1 lit. b, c GDPR) — pentru formularul 230 și donații</li>
+            <li><strong>Interesului legitim</strong> (Art. 6 alin. 1 lit. f GDPR) — pentru răspunsul la mesajele de contact</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>5. Cât timp păstrăm datele</h2>
+          <ul>
+            <li>Datele din formularul 230: conform obligațiilor legale de arhivare (10 ani pentru documente contabile/fiscale)</li>
+            <li>Datele de contact: maxim 2 ani de la ultima interacțiune</li>
+            <li>Datele analitice: conform politicii Google Analytics (implicit 14 luni)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>6. Drepturile tale</h2>
+          <p>Ai dreptul să:</p>
+          <ul>
+            <li>Accesezi datele tale personale</li>
+            <li>Rectifici datele inexacte</li>
+            <li>Soliciți ștergerea datelor ("dreptul de a fi uitat")</li>
+            <li>Te opui prelucrării sau să soliciți restricționarea acesteia</li>
+            <li>Soliciți portabilitatea datelor</li>
+            <li>Retragi consimțământul în orice moment</li>
+            <li>Depui o plângere la ANSPDCP (Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal)</li>
+          </ul>
+          <p>Pentru exercitarea acestor drepturi, contactează-ne la: <a href="mailto:office@ospc.ro">office@ospc.ro</a></p>
+        </section>
+
+        <section>
+          <h2>7. Cookie-uri</h2>
+          <p>Site-ul folosește:</p>
+          <ul>
+            <li><strong>Cookie-uri tehnice esențiale</strong> — necesare pentru funcționarea site-ului (nu necesită consimțământ)</li>
+            <li><strong>Cookie-uri analitice</strong> (Google Analytics) — numai cu consimțământul tău explicit, pentru statistici de vizitatori</li>
+          </ul>
+          <p>Poți modifica preferințele tale de cookie-uri oricând, apăsând butonul "Cookie-uri" din subsolul paginii.</p>
+        </section>
+
+        <section>
+          <h2>8. Securitatea datelor</h2>
+          <p>Site-ul este protejat cu SSL/HTTPS prin Cloudflare. Luăm măsuri tehnice și organizatorice adecvate pentru protecția datelor tale.</p>
+        </section>
+
+        <section>
+          <h2>9. Modificări</h2>
+          <p>Ne rezervăm dreptul de a actualiza această politică. Versiunea actualizată va fi publicată pe această pagină cu data revizuirii.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+</Layout>
+
+<style>
+  .privacy-content section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .privacy-content section:last-child {
+    border-bottom: none;
+  }
+  .privacy-content h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+  }
+  .privacy-content p {
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .privacy-content ul {
+    color: #475569;
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .privacy-content li {
+    margin-bottom: 0.5rem;
+  }
+  .privacy-content a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .privacy-content a:hover {
+    text-decoration: underline;
+  }
+</style>

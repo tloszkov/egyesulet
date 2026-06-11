@@ -25,7 +25,9 @@ const currentYear = new Date().getFullYear();
           <li><a href={lang === 'ro' ? '/despre-noi' : lang === 'hu' ? '/hu/rolunk' : '/en/about'} class="footer-link-item">{t('nav.about')}</a></li>
           <li><a href={lang === 'ro' ? '/proiecte' : lang === 'hu' ? '/hu/projektek' : '/en/projects'} class="footer-link-item">{t('nav.projects')}</a></li>
           <li><a href={lang === 'ro' ? '/stiri' : lang === 'hu' ? '/hu/hirek' : '/en/news'} class="footer-link-item">{t('nav.news')}</a></li>
-          <li><a href="/privacy" class="footer-link-item">Privacy Policy</a></li>
+          <li><a href={lang === 'ro' ? '/transparenta' : lang === 'hu' ? '/hu/atlathatosag' : '/en/transparency'} class="footer-link-item">{lang === 'hu' ? 'Átláthatóság' : lang === 'ro' ? 'Transparență' : 'Transparency'}</a></li>
+          <li><a href={lang === 'ro' ? '/privacy' : lang === 'hu' ? '/hu/adatvedelem' : '/en/privacy'} class="footer-link-item">{lang === 'hu' ? 'Adatvédelem' : lang === 'ro' ? 'Confidențialitate' : 'Privacy Policy'}</a></li>
+          <li><button id="cookie-settings-btn" class="footer-link-item footer-cookie-btn">{lang === 'hu' ? 'Sütik' : lang === 'ro' ? 'Cookie-uri' : 'Cookies'}</button></li>
         </ul>
       </div>
 
@@ -79,6 +81,15 @@ const currentYear = new Date().getFullYear();
   .footer-link-item:hover {
     color: white;
   }
+  .footer-cookie-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: 500;
+  }
   .footer-contact-card {
     background: rgba(255, 255, 255, 0.03);
     padding: 1.25rem;
@@ -95,3 +106,12 @@ const currentYear = new Date().getFullYear();
     .footer-grid { grid-template-columns: 1fr !important; gap: 4rem; }
   }
 </style>
+
+<script>
+  document.getElementById('cookie-settings-btn')?.addEventListener('click', () => {
+    localStorage.removeItem('ospc_cookie_consent');
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.style.display = 'block';
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  });
+</script>

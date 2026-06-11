@@ -1,0 +1,180 @@
+---
+const { lang } = Astro.props;
+
+const texts = {
+  ro: {
+    message: 'Folosim cookie-uri pentru a îmbunătăți experiența pe site. Cookie-urile analitice (Google Analytics) sunt activate doar cu acordul tău.',
+    accept: 'Accept',
+    decline: 'Refuz',
+    policy: 'Politica de confidențialitate',
+    policyUrl: '/privacy',
+  },
+  hu: {
+    message: 'Sütiket használunk a weboldal élményének javítása érdekében. Az elemzési sütik (Google Analytics) csak hozzájárulásod alapján aktiválódnak.',
+    accept: 'Elfogadom',
+    decline: 'Elutasítom',
+    policy: 'Adatvédelmi tájékoztató',
+    policyUrl: '/hu/adatvedelem',
+  },
+  en: {
+    message: 'We use cookies to improve your experience. Analytics cookies (Google Analytics) are only activated with your consent.',
+    accept: 'Accept',
+    decline: 'Decline',
+    policy: 'Privacy Policy',
+    policyUrl: '/en/privacy',
+  },
+}[lang as 'ro' | 'hu' | 'en'] ?? {
+  message: 'We use cookies.',
+  accept: 'Accept',
+  decline: 'Decline',
+  policy: 'Privacy Policy',
+  policyUrl: '/privacy',
+};
+---
+
+<div id="cookie-banner" style="display: none;">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:#4f46e5"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path><path d="M8.5 8.5v.01"></path><path d="M16 15.5v.01"></path><path d="M12 12v.01"></path></svg>
+      <p>{texts.message} <a href={texts.policyUrl}>{texts.policy}</a></p>
+    </div>
+    <div class="cookie-actions">
+      <button id="cookie-decline" class="btn-decline">{texts.decline}</button>
+      <button id="cookie-accept" class="btn-accept">{texts.accept}</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const COOKIE_KEY = 'ospc_cookie_consent';
+
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+
+  const consent = localStorage.getItem(COOKIE_KEY);
+
+  if (!consent) {
+    banner!.style.display = 'block';
+  } else if (consent === 'accepted') {
+    loadAnalytics();
+  }
+
+  acceptBtn?.addEventListener('click', () => {
+    localStorage.setItem(COOKIE_KEY, 'accepted');
+    banner!.style.display = 'none';
+    loadAnalytics();
+  });
+
+  declineBtn?.addEventListener('click', () => {
+    localStorage.setItem(COOKIE_KEY, 'declined');
+    banner!.style.display = 'none';
+  });
+
+  function loadAnalytics() {
+    const GA_ID = 'G-XXXXXXXXXX';
+    if (!GA_ID || GA_ID === 'G-XXXXXXXXXX') return;
+    const s = document.createElement('script');
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+    s.async = true;
+    document.head.appendChild(s);
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    function gtag(...args: any[]) { (window as any).dataLayer.push(args); }
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+</script>
+
+<style>
+  #cookie-banner {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 3rem);
+    max-width: 860px;
+    z-index: 99999;
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  .cookie-inner {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 1.25rem 1.75rem;
+    box-shadow: 0 20px 60px -10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .cookie-text {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  .cookie-text p {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .cookie-text a {
+    color: #4f46e5;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .cookie-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .btn-decline {
+    padding: 0.6rem 1.25rem;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-decline:hover { background: #f8fafc; border-color: #cbd5e1; }
+
+  .btn-accept {
+    padding: 0.6rem 1.25rem;
+    border-radius: 10px;
+    border: none;
+    background: #4f46e5;
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(79,70,229,0.3);
+  }
+  .btn-accept:hover { background: #3730a3; transform: translateY(-1px); }
+
+  @media (max-width: 640px) {
+    .cookie-inner {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.25rem;
+    }
+    .cookie-text { flex-direction: column; }
+    .cookie-actions { width: 100%; }
+    .btn-accept, .btn-decline { flex: 1; }
+  }
+</style>

@@ -1,0 +1,134 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'en';
+---
+
+<Layout title="Privacy Policy - OSPC" lang={lang} description="Privacy Policy and personal data processing - A Chance for the Community Association">
+  <Header lang={lang} />
+  <main style="padding-top: 8rem; padding-bottom: 6rem;">
+    <div class="container" style="max-width: 800px;">
+      <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Privacy Policy</h1>
+      <p style="color: #64748b; margin-bottom: 3rem;">Last updated: June 2025</p>
+
+      <div class="privacy-content">
+        <section>
+          <h2>1. Who we are</h2>
+          <p>A Chance for the Community Association (OSPC), headquartered at Str. Morii nr. 34, Cristuru Secuiesc, Harghita County, Romania, is responsible for the processing of personal data collected through this website (<strong>ospc.ro</strong>).</p>
+          <p>Contact: <a href="mailto:office@ospc.ro">office@ospc.ro</a></p>
+        </section>
+
+        <section>
+          <h2>2. What data we collect</h2>
+          <p>We collect personal data only when you voluntarily provide it through:</p>
+          <ul>
+            <li><strong>Contact form</strong> — name, email address, message</li>
+            <li><strong>Tax redirection form (Form 230 / 3.5%)</strong> — last name, first name, personal numeric code (CNP), home address, email, digital handwritten signature</li>
+            <li><strong>Donation form</strong> — name, email</li>
+          </ul>
+          <p>The website may also automatically collect technical data (IP address, browser type) through web analytics services (Google Analytics), if you consent to the use of cookies.</p>
+        </section>
+
+        <section>
+          <h2>3. Why we process data</h2>
+          <ul>
+            <li><strong>Form 230</strong> — to prepare and submit the income tax redirection declaration to ANAF, in accordance with Romanian tax law</li>
+            <li><strong>Contact form</strong> — to respond to your inquiries</li>
+            <li><strong>Donations</strong> — to process your donation and issue a confirmation</li>
+            <li><strong>Web analytics</strong> — to understand website traffic and improve the site (only with your consent)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. Legal basis</h2>
+          <p>We process data based on:</p>
+          <ul>
+            <li><strong>Consent</strong> (Art. 6(1)(a) GDPR) — for newsletter, analytics cookies</li>
+            <li><strong>Contract performance / legal obligation</strong> (Art. 6(1)(b)(c) GDPR) — for Form 230 and donations</li>
+            <li><strong>Legitimate interest</strong> (Art. 6(1)(f) GDPR) — for responding to contact messages</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>5. How long we retain data</h2>
+          <ul>
+            <li>Form 230 data: in accordance with legal archiving obligations (10 years for accounting/fiscal documents)</li>
+            <li>Contact data: up to 2 years from last interaction</li>
+            <li>Analytics data: in accordance with Google Analytics policy (14 months by default)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>6. Your rights</h2>
+          <p>You have the right to:</p>
+          <ul>
+            <li>Access your personal data</li>
+            <li>Rectify inaccurate data</li>
+            <li>Request erasure of your data ("right to be forgotten")</li>
+            <li>Object to processing or request its restriction</li>
+            <li>Request data portability</li>
+            <li>Withdraw your consent at any time</li>
+            <li>Lodge a complaint with ANSPDCP (Romanian Data Protection Authority)</li>
+          </ul>
+          <p>To exercise these rights, contact us at: <a href="mailto:office@ospc.ro">office@ospc.ro</a></p>
+        </section>
+
+        <section>
+          <h2>7. Cookies</h2>
+          <p>The website uses:</p>
+          <ul>
+            <li><strong>Essential technical cookies</strong> — necessary for the website to function (no consent required)</li>
+            <li><strong>Analytics cookies</strong> (Google Analytics) — only with your explicit consent, for visitor statistics</li>
+          </ul>
+          <p>You can change your cookie preferences at any time by clicking the "Cookies" button in the page footer.</p>
+        </section>
+
+        <section>
+          <h2>8. Data security</h2>
+          <p>The website is protected with SSL/HTTPS through Cloudflare. We take appropriate technical and organizational measures to protect your data.</p>
+        </section>
+
+        <section>
+          <h2>9. Changes</h2>
+          <p>We reserve the right to update this policy. The updated version will be published on this page with the revision date.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+</Layout>
+
+<style>
+  .privacy-content section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .privacy-content section:last-child { border-bottom: none; }
+  .privacy-content h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1rem;
+  }
+  .privacy-content p {
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .privacy-content ul {
+    color: #475569;
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .privacy-content li { margin-bottom: 0.5rem; }
+  .privacy-content a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .privacy-content a:hover { text-decoration: underline; }
+</style>
