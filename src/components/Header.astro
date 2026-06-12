@@ -4,21 +4,22 @@ const { lang } = Astro.props;
 const t = useTranslations(lang as any);
 
 const links = {
-    ro: { about: '/despre-noi', projects: '/proiecte', news: '/stiri', contact: '/contact', support: '/sustine-ne' },
-    hu: { about: '/hu/rolunk', projects: '/hu/projektek', news: '/hu/hirek', contact: '/hu/kapcsolat', support: '/hu/tamogatas' },
-    en: { about: '/en/about', projects: '/en/projects', news: '/en/news', contact: '/en/contact', support: '/en/support' }
+    ro: { about: '/despre-noi', projects: '/proiecte', news: '/stiri', events: '/evenimente', contact: '/contact', support: '/sustine-ne' },
+    hu: { about: '/hu/rolunk', projects: '/hu/projektek', news: '/hu/hirek', events: '/hu/esemenyek', contact: '/hu/kapcsolat', support: '/hu/tamogatas' },
+    en: { about: '/en/about', projects: '/en/projects', news: '/en/news', events: '/en/events', contact: '/en/contact', support: '/en/support' }
 }[lang as 'ro' | 'hu' | 'en'];
 
 // Page equivalents across languages — used for language switcher
 const pageMap: Record<string, Record<string, string>> = {
-    'home':         { ro: '/',            hu: '/hu/',             en: '/en/' },
-    'about':        { ro: '/despre-noi',  hu: '/hu/rolunk',       en: '/en/about' },
-    'projects':     { ro: '/proiecte',    hu: '/hu/projektek',    en: '/en/projects' },
-    'news':         { ro: '/stiri',       hu: '/hu/hirek',        en: '/en/news' },
-    'contact':      { ro: '/contact',     hu: '/hu/kapcsolat',    en: '/en/contact' },
-    'support':      { ro: '/sustine-ne',  hu: '/hu/tamogatas',    en: '/en/support' },
-    'privacy':      { ro: '/privacy',     hu: '/hu/adatvedelem',  en: '/en/privacy' },
-    'transparency': { ro: '/transparenta',hu: '/hu/atlathatosag', en: '/en/transparency' },
+    'home':         { ro: '/',             hu: '/hu/',              en: '/en/' },
+    'about':        { ro: '/despre-noi',  hu: '/hu/rolunk',        en: '/en/about' },
+    'projects':     { ro: '/proiecte',    hu: '/hu/projektek',     en: '/en/projects' },
+    'news':         { ro: '/stiri',       hu: '/hu/hirek',         en: '/en/news' },
+    'events':       { ro: '/evenimente',  hu: '/hu/esemenyek',     en: '/en/events' },
+    'contact':      { ro: '/contact',     hu: '/hu/kapcsolat',     en: '/en/contact' },
+    'support':      { ro: '/sustine-ne',  hu: '/hu/tamogatas',     en: '/en/support' },
+    'privacy':      { ro: '/privacy',     hu: '/hu/adatvedelem',   en: '/en/privacy' },
+    'transparency': { ro: '/transparenta',hu: '/hu/atlathatosag',  en: '/en/transparency' },
 };
 
 // Detect current page key from pathname
@@ -28,6 +29,7 @@ const slugMap: Record<string, string> = {
     '/despre-noi': 'about', '/hu/rolunk': 'about', '/en/about': 'about',
     '/proiecte': 'projects', '/hu/projektek': 'projects', '/en/projects': 'projects',
     '/stiri': 'news', '/hu/hirek': 'news', '/en/news': 'news',
+    '/evenimente': 'events', '/hu/esemenyek': 'events', '/en/events': 'events',
     '/contact': 'contact', '/hu/kapcsolat': 'contact', '/en/contact': 'contact',
     '/sustine-ne': 'support', '/hu/tamogatas': 'support', '/en/support': 'support',
     '/privacy': 'privacy', '/hu/adatvedelem': 'privacy', '/en/privacy': 'privacy',
@@ -57,6 +59,7 @@ const langLinks = {
         <li><a href={links.about}>{t('nav.about')}</a></li>
         <li><a href={links.projects}>{t('nav.projects')}</a></li>
         <li><a href={links.news}>{t('nav.news')}</a></li>
+        <li><a href={links.events}>{lang === 'hu' ? 'Események' : lang === 'ro' ? 'Evenimente' : 'Events'}</a></li>
         <li><a href={links.contact}>{t('nav.contact')}</a></li>
       </ul>
 
@@ -83,6 +86,7 @@ const langLinks = {
       <a href={links.about}>{t('nav.about')}</a>
       <a href={links.projects}>{t('nav.projects')}</a>
       <a href={links.news}>{t('nav.news')}</a>
+      <a href={links.events}>{lang === 'hu' ? 'Események' : lang === 'ro' ? 'Evenimente' : 'Events'}</a>
       <a href={links.contact}>{t('nav.contact')}</a>
       <div class="header-mobile-divider"></div>
       <div class="header-mobile-langs">

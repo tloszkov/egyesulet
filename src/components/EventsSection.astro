@@ -1,0 +1,132 @@
+---
+const { lang } = Astro.props;
+
+const title = lang === 'hu' ? 'Események & Programok' : lang === 'ro' ? 'Evenimente & Programe' : 'Events & Programs';
+const subtitle = lang === 'hu' ? 'Közelgő rendezvényeink és programjaink' : lang === 'ro' ? 'Evenimentele și programele noastre viitoare' : 'Our upcoming events and programs';
+
+// Google Calendar ID — cseréld le a saját naptárad ID-jára
+// Megtalálod: Google Calendar → Beállítások → Naptár → Naptár integrálása → Naptár azonosítója
+const CALENDAR_ID = 'YOUR_CALENDAR_ID%40group.calendar.google.com';
+
+const calLang = lang === 'hu' ? 'hu' : lang === 'ro' ? 'ro' : 'en';
+const timezone = 'Europe%2FBucharest';
+const calUrl = `https://calendar.google.com/calendar/embed?src=${CALENDAR_ID}&ctz=${timezone}&hl=${calLang}&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA`;
+---
+
+<section class="events-section reveal" style="padding: 6rem 0;">
+  <div class="container">
+    <div class="section-title">
+      <h2>{title}</h2>
+      <p>{subtitle}</p>
+    </div>
+
+    <div class="calendar-wrapper">
+      {CALENDAR_ID === 'YOUR_CALENDAR_ID%40group.calendar.google.com' ? (
+        <!-- Placeholder amíg nincs beállítva a Google Calendar -->
+        <div class="calendar-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <h3>{lang === 'hu' ? 'Naptár hamarosan' : lang === 'ro' ? 'Calendar în curând' : 'Calendar coming soon'}</h3>
+          <p>
+            {lang === 'hu' ? 'A Google Calendar még nincs beállítva. A CALENDAR_ID-t add meg az EventsSection.astro fájlban.' :
+             lang === 'ro' ? 'Google Calendar nu este configurat încă. Adaugă CALENDAR_ID în fișierul EventsSection.astro.' :
+             'Google Calendar is not configured yet. Add the CALENDAR_ID in EventsSection.astro.'}
+          </p>
+        </div>
+      ) : (
+        <iframe
+          src={calUrl}
+          style="border: 0;"
+          width="100%"
+          height="600"
+          frameborder="0"
+          scrolling="no"
+          title={title}
+          loading="lazy"
+        ></iframe>
+      )}
+    </div>
+
+    <div class="events-actions">
+      <a
+        href={`https://calendar.google.com/calendar/r?cid=${CALENDAR_ID}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-calendar"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        {lang === 'hu' ? 'Hozzáadás a Google Naptárhoz' : lang === 'ro' ? 'Adaugă în Google Calendar' : 'Add to Google Calendar'}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .calendar-wrapper {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-premium);
+    border: 1px solid #f1f5f9;
+    margin-bottom: 2rem;
+  }
+
+  .calendar-wrapper iframe {
+    display: block;
+    width: 100%;
+  }
+
+  .calendar-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 5rem 2rem;
+    text-align: center;
+    color: #94a3b8;
+  }
+
+  .calendar-placeholder svg { color: #cbd5e1; }
+
+  .calendar-placeholder h3 {
+    font-size: 1.25rem;
+    color: #64748b;
+    font-weight: 700;
+  }
+
+  .calendar-placeholder p {
+    max-width: 420px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #94a3b8;
+  }
+
+  .events-actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-calendar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.75rem;
+    background: white;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btn-calendar:hover {
+    background: #f8fafc;
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+</style>

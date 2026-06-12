@@ -25,6 +25,7 @@ const currentYear = new Date().getFullYear();
           <li><a href={lang === 'ro' ? '/despre-noi' : lang === 'hu' ? '/hu/rolunk' : '/en/about'} class="footer-link-item">{t('nav.about')}</a></li>
           <li><a href={lang === 'ro' ? '/proiecte' : lang === 'hu' ? '/hu/projektek' : '/en/projects'} class="footer-link-item">{t('nav.projects')}</a></li>
           <li><a href={lang === 'ro' ? '/stiri' : lang === 'hu' ? '/hu/hirek' : '/en/news'} class="footer-link-item">{t('nav.news')}</a></li>
+          <li><a href={lang === 'ro' ? '/evenimente' : lang === 'hu' ? '/hu/esemenyek' : '/en/events'} class="footer-link-item">{lang === 'hu' ? 'Események' : lang === 'ro' ? 'Evenimente' : 'Events'}</a></li>
           <li><a href={lang === 'ro' ? '/transparenta' : lang === 'hu' ? '/hu/atlathatosag' : '/en/transparency'} class="footer-link-item">{lang === 'hu' ? 'Átláthatóság' : lang === 'ro' ? 'Transparență' : 'Transparency'}</a></li>
           <li><a href={lang === 'ro' ? '/privacy' : lang === 'hu' ? '/hu/adatvedelem' : '/en/privacy'} class="footer-link-item">{lang === 'hu' ? 'Adatvédelem' : lang === 'ro' ? 'Confidențialitate' : 'Privacy Policy'}</a></li>
           <li><button id="cookie-settings-btn" class="footer-link-item footer-cookie-btn">{lang === 'hu' ? 'Sütik' : lang === 'ro' ? 'Cookie-uri' : 'Cookies'}</button></li>

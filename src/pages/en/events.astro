@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import EventsSection from '../../components/EventsSection.astro';
+
+const lang = 'en';
+---
+
+<Layout title="Events - A Chance for the Community Association" lang={lang}>
+  <Header lang={lang} />
+  <main style="padding-top: 100px;">
+    <EventsSection lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</Layout>

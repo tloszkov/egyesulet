@@ -63,6 +63,7 @@ const texts = {
   acceptBtn?.addEventListener('click', () => {
     localStorage.setItem(COOKIE_KEY, 'accepted');
     banner!.style.display = 'none';
+    window.dispatchEvent(new CustomEvent('cookie-consent-accepted'));
     loadAnalytics();
   });
 

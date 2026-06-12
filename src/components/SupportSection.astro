@@ -794,10 +794,8 @@ const isEn = lang === 'en';
             return;
         }
 
-        // Mock redirection to Barion style payment
-        const waitMsg = document.documentElement.lang === 'hu' ? 'Redirektálás a biztonságos fizetési oldalra (Barion)...' : 'Redirecționare către plată securizată (Barion)...';
-        alert(`${waitMsg}\nÖsszeg: ${amount} ${activeCurrency}`);
-        window.location.href = "https://www.barion.com";
+        // Mock redirection to PayU
+        window.location.href = "https://www.payu.ro";
     });
 </script>
 

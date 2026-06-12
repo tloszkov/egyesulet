@@ -2,39 +2,96 @@
 import { useTranslations } from '../i18n/utils';
 const { lang } = Astro.props;
 const t = useTranslations(lang as any);
+
+const fbLocale = lang === 'hu' ? 'hu_HU' : lang === 'ro' ? 'ro_RO' : 'en_US';
+
+const texts = {
+  subtitle: lang === 'hu' ? 'Friss hírek közvetlenül a Facebook oldalunkról' : lang === 'ro' ? 'Ultimele noutăți direct de pe pagina noastră de Facebook' : 'Latest news directly from our Facebook page',
+  btnLabel: lang === 'hu' ? 'Összes hír a Facebookon' : lang === 'ro' ? 'Toate știrile pe Facebook' : 'All news on Facebook',
+  consentMsg: lang === 'hu' ? 'A Facebook hírfolyam megtekintéséhez fogadd el a sütiket.' : lang === 'ro' ? 'Acceptă cookie-urile pentru a vedea fluxul de Facebook.' : 'Accept cookies to load the Facebook feed.',
+  consentBtn: lang === 'hu' ? 'Sütik kezelése' : lang === 'ro' ? 'Gestionează cookie-urile' : 'Manage cookies',
+};
 ---
 
 <section id="news" class="reveal" style="padding: 6rem 0;">
   <div class="container">
     <div class="section-title">
       <h2>{t('nav.news')}</h2>
-      <p>{lang === 'hu' ? 'Friss hírek közvetlenül a Facebook oldalunkról' : lang === 'ro' ? 'Ultimele noutăți direct de pe pagina noastră de Facebook' : 'Latest news directly from our Facebook page'}</p>
+      <p>{texts.subtitle}</p>
     </div>
 
     <div class="fb-feed-wrapper">
       <div id="fb-root"></div>
-      <div class="fb-page"
-        data-href="https://www.facebook.com/ospcom"
-        data-tabs="timeline"
-        data-width="500"
-        data-height="700"
-        data-small-header="false"
-        data-adapt-container-width="true"
-        data-hide-cover="false"
-        data-show-facepile="true">
+
+      <div id="fb-consent-placeholder" class="fb-placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="#1877f2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        <p>{texts.consentMsg}</p>
+        <button id="fb-open-consent" class="btn-consent">{texts.consentBtn}</button>
+      </div>
+
+      <div id="fb-embed" style="display:none;">
+        <div class="fb-page"
+          data-href="https://www.facebook.com/ospcom"
+          data-tabs="timeline"
+          data-height="700"
+          data-small-header="false"
+          data-adapt-container-width="true"
+          data-hide-cover="false"
+          data-show-facepile="true">
+        </div>
       </div>
     </div>
 
     <div style="text-align: center; margin-top: 3rem;">
       <a href="https://www.facebook.com/ospcom" target="_blank" rel="noopener noreferrer" class="btn-fb">
-        {lang === 'hu' ? 'Összes hír a Facebookon' : lang === 'ro' ? 'Toate știrile pe Facebook' : 'All news on Facebook'}
+        {texts.btnLabel}
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
       </a>
     </div>
   </div>
 </section>
 
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/hu_HU/sdk.js#xfbml=1&version=v19.0"></script>
+<script define:vars={{ fbLocale }}>
+  const COOKIE_KEY = 'ospc_cookie_consent';
+
+  function showFbEmbed() {
+    const placeholder = document.getElementById('fb-consent-placeholder');
+    const embed = document.getElementById('fb-embed');
+    if (placeholder) placeholder.style.display = 'none';
+    if (embed) embed.style.display = 'block';
+  }
+
+  function loadFacebookSDK() {
+    if ((window as any).FB) {
+      (window as any).FB.XFBML.parse();
+      showFbEmbed();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = `https://connect.facebook.net/${fbLocale}/sdk.js#xfbml=1&version=v21.0`;
+    script.async = true;
+    script.defer = true;
+    script.crossOrigin = 'anonymous';
+    (window as any).fbAsyncInit = function () {
+      (window as any).FB.init({ xfbml: true, version: 'v21.0' });
+      showFbEmbed();
+    };
+    document.head.appendChild(script);
+  }
+
+  if (localStorage.getItem(COOKIE_KEY) === 'accepted') {
+    loadFacebookSDK();
+  }
+
+  window.addEventListener('cookie-consent-accepted', () => {
+    loadFacebookSDK();
+  });
+
+  document.getElementById('fb-open-consent')?.addEventListener('click', () => {
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.style.display = 'block';
+  });
+</script>
 
 <style>
   .fb-feed-wrapper {
@@ -42,6 +99,42 @@ const t = useTranslations(lang as any);
     justify-content: center;
     margin-top: 3rem;
     min-height: 400px;
+  }
+
+  .fb-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 500px;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .btn-consent {
+    padding: 0.65rem 1.5rem;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    color: #475569;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-consent:hover {
+    background: #e2e8f0;
+    color: #1e293b;
   }
 
   .btn-fb {
